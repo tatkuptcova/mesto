@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESTO</title>
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/pages/index.css">
+</head>
+
+<body class="page">
+    <header class="header">
+        <img src="/images/logo.png" alt="Лого" class="header__logo">
+    </header>
+
+    <main class="container">
+        <div class="content">
+          <section class="profile">
+            <div class="profile__avatar">
+              <img class="profile__image" src="/images/avatar.jpg" alt="Профиль фото">
+              <div class="profile__cover">
+                <button
+                  class="button profile__button-avatar"
+                  aria-label="Обновить"
+                ></button>
+              </div>
+            </div>
+            <div class="profile__info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button
+              type="button"
+              aria-label="Редактировать"
+              class="button profile__button-edit transition"
+            ></button>
+              <p class="profile__about">Исследователь океана</p>
+            </div>
+            <button
+            type="button"
+            aria-label="Добавить картинку"
+            class="button profile__button-add transition"
+          ></button>
+          </section>
+
+          <section class="places">
+            <ul class="places__catalogue">
+                <li class="card__item">
+                    <img class="card__image" src="/images/Karachaevsk.jpg" alt="Карачаевск">
+                </li>
+                <li class="card__item">
+                    <img class="card__image" src="/images/Elbrus.png" alt="гора Эльбрус">
+                </li>
+                <li class="card__item">
+                    <img class="card__image" src="/images/Donbai.png" alt="Донбай">
+                </li>
+                <li class="card__item">
+                    <img class="card__image" src="/images/Karachaevsk.jpg" alt="Карачаевск">
+                </li>
+                <li class="card__item">
+                    <img class="card__image" src="/images/Elbrus.png" alt="гора Эльбрус">
+                </li>
+                <li class="card__item">
+                    <img class="card__image" src="/images/Donbai.png" alt="Донбай">
+                </li>
+            </ul>
+          </section>
+
+        </div>
+    </main>
+</body>
+</html>
