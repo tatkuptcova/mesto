@@ -6,3 +6,7 @@
     background-repeat: no-repeat;
     box-sizing: border-box;
 }
+
+.button:active {
+    border-style: inset;
+}
