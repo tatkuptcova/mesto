@@ -5,8 +5,12 @@
     background-position: 50%;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    -webkit-appearance: button;
+    text-transform: none;
+    overflow: visible;
 }
 
 .button:active {
     border-style: inset;
 }
+

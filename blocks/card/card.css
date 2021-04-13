@@ -6,7 +6,4 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
 }
