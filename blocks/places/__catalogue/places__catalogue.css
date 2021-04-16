@@ -1,4 +1,4 @@
-.cards__catalogue {
+.places__catalogue {
     display: grid;
     margin: 0;
     grid-template-columns: repeat(auto-fit, 282px);
