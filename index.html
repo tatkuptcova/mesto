@@ -93,12 +93,15 @@
       
        
         <section class="popup">
-            <div class="popup__container">
-              <div class="popup__edit">
-                <button type="button" aria-label="Закрыть" class="button popup__close popup__close_edit transition"></button>
-                <h2 class="popup__title"> Редактировать профиль</h2>
-                <form name="edit" class="popup__form popup__input_container-edit" action="#" method="POST" novalidate>
-                  <label class="popup__field">
+          <div class="popup__container">
+            <div class="popup__edit">
+              <button type="button" aria-label="Закрыть" class="button popup__close popup__close_edit transition">
+              </button>
+              <h2 class="popup__title"> 
+                Редактировать профиль
+              </h2>
+              <form name="edit" class="popup__form popup__input_container-edit" action="#" method="POST" novalidate>
+                <label class="popup__field">
                     <input
                       type="text"
                       id="name-input"
@@ -108,8 +111,8 @@
                       placeholder="Имя"
                       required
                     >
-                  </label>
-                  <label class="popup__field">
+                </label>
+                <label class="popup__field">
                     <input
                       type="text"
                       id="about-input"
@@ -124,15 +127,14 @@
               </form>
             </div>
           </div>
-          </div>
         </section> 
 
 
         <footer class="footer">
           <p class="footer__copyright">&copy; 2021 Tatiana KUPTSOVA</p>
         </footer>
-
-      </div>  
+        
+      </div>
     </main>
     <script src="./script/index.js"></script>  
 </body>
