@@ -44,7 +44,7 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 
 
-//let likeButtons = document.querySelectorAll('.like__button');
+//let likeButtons = document.querySelectorAll('.button__like');
 // for (let button of likeButtons) {
 //     button.addEventListener(
 //         'click', () => 
@@ -55,6 +55,6 @@ formElement.addEventListener('submit', formSubmitHandler);
 //likeButtons.forEach(function(button) {
   //  button.addEventListener(
   //      'click', () => 
-   //         button.classList.toggle('like__button_active')
+   //         button.classList.toggle('button__like_active')
    // )    
 //})
