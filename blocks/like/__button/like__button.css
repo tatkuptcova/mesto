@@ -1,15 +1,14 @@
-/*.button__like {
+.like__button {
     background-image: url(../../../images/like_button.svg);
     border: none;
     min-width: 22px;
     min-height: 19px;
 }
 
-.button__like:hover {
+.like__button:hover {
     opacity: .4;
 }
 
-.button__like_active {
+.like__button_active {
     background-image: url(../../../images/black_like_button.svg);
 }
-*/

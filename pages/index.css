@@ -40,7 +40,10 @@
 @import url(../blocks/place/__like/place__like.css);
 
 @import url(../blocks/button/button.css);
-@import url(../blocks/button/__like/button__like.css);
+
+
+@import url(../blocks/like/like.css);
+@import url(../blocks/like/__button/like__button.css);
 
 @import url(../blocks/transition/transition.css);
 
