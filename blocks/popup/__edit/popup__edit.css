@@ -1,5 +1,5 @@
 .popup__edit {
     visibility: visible;
     opacity: 1;
-    transition: visibility 0s,opacity .5s linear
+    transition: visibility 0s,opacity .5s linear;
 }
