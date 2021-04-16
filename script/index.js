@@ -41,20 +41,3 @@ function formSubmitHandler(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
-
-
-
-//let likeButtons = document.querySelectorAll('.button__like');
-// for (let button of likeButtons) {
-//     button.addEventListener(
-//         'click', () => 
-//             button.classList.toggle('button__like_active')
-//     )    
-// }
-
-//likeButtons.forEach(function(button) {
-  //  button.addEventListener(
-  //      'click', () => 
-   //         button.classList.toggle('button__like_active')
-   // )    
-//})
