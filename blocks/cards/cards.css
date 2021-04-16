@@ -1,9 +1,9 @@
-.places {
+.cards {
     margin-top: 47px;
     width: 100%;
 }
 @media screen and (max-width: 590px) {
-    .places  {
+    .cards  {
         margin-top: 36px;
     }
 }
