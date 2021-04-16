@@ -30,10 +30,10 @@
 @import url(../blocks/popup/__form/popup__form.css);
 
 @import url(../blocks/places/places.css);
-@import url(../blocks/places/__catalogue/places__catalogue.css);
 
 
 @import url(../blocks/place/place.css);
+@import url(../blocks/place/__catalogue/place__catalogue.css);
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__info/place__info.css);
 @import url(../blocks/place/__title/place__title.css);

@@ -1,4 +1,4 @@
-.places__catalogue {
+.place__catalogue {
     display: grid;
     margin: 0;
     grid-template-columns: repeat(auto-fit, 282px);
@@ -9,4 +9,3 @@
     width: 100%;
     list-style: none;
 }
-      
