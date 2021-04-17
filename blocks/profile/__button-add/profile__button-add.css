@@ -1,18 +1,18 @@
 .profile__button-add {
-    background-image:url(../../../images/add___button.svg);
+    background-image:url(../../../images/add_button.svg);
     margin-left: auto;
-    min-width: 150px;
-    min-height: 50px;
+    width: 150px;
+    height: 50px;
     align-self: center;
     border: 1px solid #fff;
 }
 
 .profile__button-add:hover {
-    opacity: .4;
+    opacity: .6;
 }
 @media screen and (max-width: 760px) {
     .profile__button-add {
-        margin: auto;
-        margin-top: 36px;
+        margin: 36px auto auto;
+        min-width: 282px;
     }
 }
