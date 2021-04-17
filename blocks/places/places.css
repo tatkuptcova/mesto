@@ -1,7 +1,21 @@
 .places {
-    margin-top: 47px;
+    max-width: 880px;
     width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-decoration: none;
 }
+
+
+@media screen and (max-width: 590px) {
+        .places  {
+            margin-top: 36px;
+        }
+    }
+    
 
 @media screen and (max-width: 590px) {
     .places  {
