@@ -16,6 +16,41 @@
         <img src="./images/logo.png" alt="Лого" class="header__logo">
     </header>
 
+    <section class="popup">
+      <div class="popup__container">
+        <div class="popup__edit">
+          <button type="button" aria-label="Закрыть" class="button popup__close popup__close_edit transition">
+          </button>
+          <h2 class="popup__title"> 
+            Редактировать профиль
+          </h2>
+          <form name="edit" class="popup__form" action="#" method="POST" novalidate>
+            <label class="popup__field">
+                <input
+                  type="text"
+                  id="name-input"
+                  class="popup__item popup__item_input-name"
+                  name="name"
+                  value="Жак-Ив Кусто"
+                  placeholder="Имя"
+                >
+            </label>
+            <label class="popup__field">
+                <input
+                  type="text"
+                  id="about-input"
+                  class="popup__item popup__item_input-about"
+                  name="about"
+                  value="Исследователь океана"
+                  placeholder="О себе"
+                >
+            </label>
+            <button type="submit" class="popup__button-submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </section> 
+
     <main class="container">
       <div class="content">
         <section class="profile">
@@ -80,40 +115,7 @@
         </section>
       
        
-        <section class="popup">
-          <div class="popup__container">
-            <div class="popup__edit">
-              <button type="button" aria-label="Закрыть" class="button popup__close popup__close_edit transition">
-              </button>
-              <h2 class="popup__title"> 
-                Редактировать профиль
-              </h2>
-              <form name="edit" class="popup__form popup__form_input_container" action="#" method="POST" novalidate>
-                <label class="popup__field">
-                    <input
-                      type="text"
-                      id="name-input"
-                      class="popup__item popup__item_input-name"
-                      name="name"
-                      value="Жак-Ив Кусто"
-                      placeholder="Имя"
-                    >
-                </label>
-                <label class="popup__field">
-                    <input
-                      type="text"
-                      id="about-input"
-                      class="popup__item popup__item_input-about"
-                      name="about"
-                      value="Исследователь океана"
-                      placeholder="О себе"
-                    >
-                </label>
-                <button type="submit" class="popup__button-submit">Сохранить</button>
-              </form>
-            </div>
-          </div>
-        </section> 
+        
       </div>
     </main>
 

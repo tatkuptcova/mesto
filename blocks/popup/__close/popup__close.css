@@ -7,7 +7,11 @@
     min-width: 40px;
     min-height: 40px;
   }
-    
+  
+  .popup__close:hover {
+    opacity: .7;
+  }
+
 @media screen and (max-width: 475px) {
     .popup__close {
       min-width: 26px;
