@@ -3,15 +3,11 @@
     border: none;
     min-width: 22px;
     min-height: 19px;
-    display: flex;
-    margin-left: 21px;
-    justify-content: center;
-    max-width: 21px;
-    flex-wrap: wrap;
+    outline: none;
 }
 
 .place__button-like:hover {
-    opacity: .7;
+    opacity: .5;
 }
 
 .place__button-like_active {
