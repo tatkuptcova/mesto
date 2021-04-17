@@ -3,12 +3,17 @@
     border: none;
     min-width: 22px;
     min-height: 19px;
+    display: flex;
+    margin-left: 21px;
+    justify-content: center;
+    max-width: 21px;
+    flex-wrap: wrap;
 }
 
 .place__button-like:hover {
-    opacity: .4;
+    opacity: .7;
 }
 
-.bplace__button-like_active {
+.place__button-like_active {
     background-image: url(../../../images/black_like_button.svg);
 }
