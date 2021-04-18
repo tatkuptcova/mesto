@@ -4,7 +4,7 @@
     bottom: 100%;
     border: 0;
     min-width: 40px;
-    min-height: 40px;
+    min-height: 40px; 
     position: absolute;
   }
   
@@ -16,5 +16,5 @@
     .popup__close {
       min-width: 26px;
       min-height: 26px;
-    }
+   }
 }
