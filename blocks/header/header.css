@@ -1,17 +1,16 @@
 .header {
     max-width: 882px;
     margin: auto;
-    margin-top: 45px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
-@media screen and (max-width: 475px) {
+/*@media screen and (max-width: 475px) {
     .header {
         max-width: 320px;
     }
-}
+}*/
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1023px) {
     .header {
         max-width: 581px;
     }
