@@ -34,3 +34,19 @@ popupClose.addEventListener('click', closePopup);
 
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+
+let likeButtons = document.querySelectorAll('.places__button-like');
+// for (let button of likeButtons) {
+//     button.addEventListener(
+//         'click', () => 
+//             button.classList.toggle('place__button-like_active')
+//     )    
+// }
+
+likeButtons.forEach(function(button) {
+    button.addEventListener(
+        'click', () => 
+            button.classList.toggle('places__button-like_active')
+    )    
+})

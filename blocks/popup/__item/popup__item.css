@@ -11,7 +11,7 @@
 }
 
 
-@media screen and (max-width: 375px) {
+/*@media screen and (max-width: 375px) {
    .popup__item {
       margin-bottom: 30px;
       font-size: 14px;
