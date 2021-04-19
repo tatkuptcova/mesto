@@ -13,8 +13,8 @@
 
 @media screen and (max-width: 375px) {
    .popup__item {
-      margin-bottom: 20px;
-      font-size: 12px;
-      line-height: 1.25;
+      margin-bottom: 30px;
+      font-size: 14px;
+      line-height: 17px;
     }
 }
