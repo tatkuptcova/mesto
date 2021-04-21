@@ -40,7 +40,7 @@ let likeButtons = document.querySelectorAll('.places__button-like');
 // for (let button of likeButtons) {
 //     button.addEventListener(
 //         'click', () => 
-//             button.classList.toggle('place__button-like_active')
+//             button.classList.toggle('places__button-like_active')
 //     )    
 // }
 
