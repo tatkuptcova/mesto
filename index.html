@@ -13,7 +13,7 @@
 
 <body class="page">
 
-  <section class="popup">
+  <section class="popup id='popupEdit'">
     <div class="popup__container">
       <button type="button" aria-label="Закрыть" class="button popup__close">
       </button>
@@ -46,6 +46,41 @@
     </div>
   </section>
 
+  <section class="popup id='popupAdd'">
+    <div class="popup__container">
+      <button
+        type="button"
+        aria-label="Закрыть"
+        class="button popup__close popup__close_add"
+      ></button>
+      <h2 class="popup__title"> Новое место</h2>
+      <form name="add" class="popup__form" action="#" method="POST">
+        <label class="popup__field">
+          <input
+            type="text"
+            id="title-input"
+            class="popup__item popup__item_input-title"
+            name="name"
+            value=""
+            placeholder="Название"
+          />
+        </label>
+        <label class="popup__field">
+          <input
+            type="url"
+            id="link-input"
+            class="popup__item popup__item_input-link"
+            name="link"
+            value=""
+            placeholder="Ссылка на картинку"
+            required
+          />
+        </label>
+        <button type="submit" class="button popup__button-submit">Создать</button>
+      </form>
+    </div>
+  </section>
+
     <header class="header">
         <img src="./images/logo.svg" alt="Лого" class="header__logo">
     </header>
@@ -66,13 +101,15 @@
         <section class="places">
             <ul class="places__catalogue"> 
                 <li class="places__item">
+                  <button type="button" aria-label="Удалить" class="button places__button-delete"></button>
                     <img class="places__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
                     <div class="places__info">
                       <h2 class="places__title">Карачаево-Черкесия</h2>
-                        <button type="button" aria-label="Нравится" class="button places__button-like"></button>
+                      <button type="button" aria-label="Нравится" class="button places__button-like"></button>
                     </div>
                 </li>
                 <li class="places__item">
+                  <button type="button" aria-label="Удалить" class="button places__button-delete"></button>
                     <img class="places__image" src="./images/Elbrus.png" alt="гора Эльбрус">
                     <div class="places__info">
                       <h2 class="places__title">Эльбрус</h2>
@@ -80,6 +117,7 @@
                     </div>
                 </li>
                 <li class="places__item">
+                  <button type="button" aria-label="Удалить" class="button places__button-delete"></button>
                     <img class="places__image" src="./images/Donbai.png" alt="Донбай">
                     <div class="places__info">
                       <h2 class="places__title">Донбай</h2>
@@ -87,6 +125,7 @@
                     </div>
                 </li>
                 <li class="places__item">
+                  <button type="button" aria-label="Удалить" class="button places__button-delete"></button>
                     <img class="places__image" src="./images/arhiz.jpeg" alt="Архыз">
                     <div class="places__info">
                       <h2 class="places__title">Архыз</h2>
@@ -94,6 +133,7 @@
                     </div>
                  </li>
                 <li class="places__item">
+                  <button type="button" aria-label="Удалить" class="button places__button-delete"></button>
                     <img class="places__image" src="./images/Kamchatka.jpg" alt="Камчатка">
                     <div class="places__info">
                       <h2 class="places__title">Камчатка</h2>
@@ -101,6 +141,7 @@
                     </div>
                 </li>
                 <li class="places__item">
+                  <button type="button" aria-label="Удалить" class="button places__button-delete"></button>
                     <img class="places__image" src="./images/baikal.jpg" alt="Байкал">
                     <div class="places__info">
                       <h2 class="places__title">Байкал</h2>
