@@ -29,7 +29,7 @@
             <button type="button" aria-label="Добавить картинку" class="button profile__button-add">
             </button>
         </section>
-        
+      
         <section class="places">
             <ul class="places__catalogue"> 
                 <li class="places__item">
@@ -91,10 +91,10 @@
     </footer>
 
     <section class="popup popup_profile">
-      <div class="popup__container">
-        <button type="button" aria-label="Закрыть" class="button popup__close"></button>
+      <div class="popup__content popup__content_profile">
+        <button type="button" aria-label="Закрыть" class="button popup__close popup__close_profile"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="edit" class="popup__form" action="#" method="POST" novalidate>
+        <form name="edit" class="popup__form popup__form_profile" action="#" method="POST" novalidate>
           <input
             type="text"
             id="name-input"
@@ -117,10 +117,10 @@
     </section>
   
     <section class="popup popup_card">
-      <div class="popup__container">
+      <div class="popup__content popup__content_add">
         <button type="button" aria-label="Закрыть" class="button popup__close popup__close_add"></button>
         <h2 class="popup__title"> Новое место</h2>
-        <form name="add" class="popup__form" action="#" method="POST">
+        <form name="add" class="popup__form popup__form_add" action="#" method="POST">
           <input
             type="text"
             id="nameplace"
@@ -138,17 +138,17 @@
             placeholder="Ссылка на картинку"
             required
           >
-          <button type="submit" class="button popup__button-submit">Создать</button>
+          <button type="submit" class="popup__button-submit popup__button-submit_add">Создать</button>
         </form>
       </div>
     </section>
 
-    <section class="popup poup_pic">
-      <div class="popup_content">
+    <section class="popup popup_pic">
+      <div class="popup__container">
         <img class="popup__image" src="" alt="">
-        <button type="button" aria-label="Закрыть" class="button popup__close"></button>
+        <button type="button" aria-label="Закрыть" class="button popup__close popup__close_image"></button>
+        <p class="popup__name"></p>
       </div>
-
     </section>
   
 
