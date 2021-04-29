@@ -1,10 +1,6 @@
-const editButton = document.querySelector('.profile__edit-button');
-const popupClose = document.querySelector('.popup__close');
-const popupProfile = document.querySelector('.popup_profile');
-
-const addButton = document.querySelector('.profile__button-add');
-const popupNewCard = document.querySelector('.popup_card');
-const profileButtonAdd = document.querySelector('.profile__button-add');
+let editButton = document.querySelector('.profile__edit-button');
+let popupCloseProfile = document.querySelector('.popup__close_profile');
+let popupProfile = document.querySelector('.popup_profile');
 
 let formElementProfile = document.querySelector('.popup__form_profile');
 
@@ -14,63 +10,63 @@ let jobInput = document.querySelector('.popup__item_input-about');
 let nameDisplay = document.querySelector('#profileName');
 let jobDisplay = document.querySelector('#profileAbout');
 
-let formElementCard = document.querySelector('.popup__form_add');
-let titelDisplay = document.querySelector('#nameplace');
-let linkDisplay = document.querySelector('#place');
-let titleInput = document.querySelector('.popup__item_input-title');
-let linkInput = document.querySelector('.popup__item_input-link');
-
-let likeButtons = document.querySelectorAll('.places__button-like');
-
 function openPopupProfile() { 
     popupProfile.classList.add('popup_opened');
+    nameInput.value = nameDisplay.textContent;
+    jobInput.value = jobDisplay.textContent;
 }
   
 function closePopupProfile() { 
     popupProfile.classList.remove('popup_opened');
 }
-  
-function openPopupCards(){
-    popupNewCard.classList.toggle('popup_opened');
-}
 
-function closePopupCards(){
-    popupNewCard.classList.remove('popup_opened');
-}
-
-function formSubmitHandler(evt) {
+function formSubmitProfileHandler(evt) {
     evt.preventDefault(); 
     nameDisplay.textContent = nameInput.value
     jobDisplay.textContent = jobInput.value
     closePopupProfile()
 }
 
-function formSubmitHandler(evt) {
-    evt.preventDefault(); 
-    titelDisplay.textContent = titleInput.value
-    linkDisplay.textContent = linkInput.value
-    closePopupCards()
+editButton.addEventListener('click', openPopupProfile);
+popupCloseProfile.addEventListener('click', closePopupProfile);
+
+formElementProfile.addEventListener('submit', formSubmitProfileHandler);
+
+let addButton = document.querySelector('.profile__button-add');
+let popupCloseAdd = document.querySelector('.popup__close_add');
+let popupNewCard = document.querySelector('.popup_card');
+
+let formElementNewCard= document.querySelector('.popup__form_add');
+
+let titleInput = document.querySelector('.popup__item_input-title');
+let linkInput = document.querySelector('.popup__item_input-link');
+
+let titleDisplay = document.querySelector('#nameplace');
+let linkDisplay = document.querySelector('#place');
+
+function openPopupNewCard() { 
+    popupNewCard.classList.add('popup_opened');
+   titleInput.value = titleDisplay.textContent;
+    linkInput.value = linkDisplay.textContent;
+}
+  
+function closePopupNewCard() { 
+    popupNewCard.classList.remove('popup_opened');
 }
 
-likeButtons.forEach(function(button) {
-    button.addEventListener(
-        'click', () => 
-            button.classList.toggle('places__button-like_active')
-    )    
-})
+function formSubmitCardHandler(evt) {
+    evt.preventDefault(); 
+    titleDisplay.textContent = titleInput.value
+    linkDisplay.textContent = linkInput.value
+    closePopupNewCard()
+}
 
+addButton.addEventListener('click', openPopupNewCard);
+popupCloseAdd.addEventListener('click', closePopupNewCard);
 
-editButton.addEventListener('click', openPopupProfile);
-popupClose.addEventListener('click', closePopupProfile);
+formElementNewCard.addEventListener('submit', formSubmitCardHandler);
 
-addButton.addEventListener('click', openPopupCards);
-popupNewCard.addEventListener('click', closePopupCards);
-
-
-formElementProfile.addEventListener('submit', formSubmitHandler);
-formElementCard.addEventListener('submit', formSubmitHandler);
-
-
+let likeButtons = document.querySelectorAll('.places__button-like');
 // for (let button of likeButtons) {
 //     button.addEventListener(
 //         'click', () => 
@@ -78,3 +74,9 @@ formElementCard.addEventListener('submit', formSubmitHandler);
 //     )    
 // }
 
+likeButtons.forEach(function(button) {
+    button.addEventListener(
+        'click', () => 
+            button.classList.toggle('places__button-like_active')
+    )    
+})
