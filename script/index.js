@@ -66,7 +66,6 @@ popupCloseAdd.addEventListener('click', closePopupNewCard);
 
 formElementNewCard.addEventListener('submit', formSubmitCardHandler);
 
-const likeButtons = document.querySelectorAll('.elements__button-like');
 // for (let button of likeButtons) {
 //     button.addEventListener(
 //         'click', () => 
@@ -74,14 +73,7 @@ const likeButtons = document.querySelectorAll('.elements__button-like');
 //     )    
 // }
 
-likeButtons.forEach(function(button) {
-    button.addEventListener(
-        'click', () => 
-            button.classList.toggle('elements__button-like_active')
-    )    
-})
-
-const elementsList = document.querySelector('.elements');
+const elementsList = document.querySelector('.elements__catalogue');
 const elementTemplate = document.querySelector('#cards-template');
 
 
@@ -113,8 +105,13 @@ const initialCards = [
 ];
 
 initialCards.forEach((element) => {
-  const initialCardElement = addCard.content.querySelector('.elements__item').cloneNoode(true);
+  const initialCardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
   initialCardElement.querySelector('.elements__title').textContent = element.name;
-  initialCardElement.querySelector('.elements__image').href = element.link;
-  ulPlace.append(initialCardElement);
+  initialCardElement.querySelector('.elements__image').src = element.link;
+  const likeButton = initialCardElement.querySelector('.elements__button-like')
+  likeButton.addEventListener(
+    'click', () => 
+      likeButton.classList.toggle('elements__button-like_active')
+  )
+  elementsList.append(initialCardElement);
 })
