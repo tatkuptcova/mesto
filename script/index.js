@@ -45,20 +45,20 @@ const titleDisplay = document.querySelector('#nameplace');
 const linkDisplay = document.querySelector('#place');
 
 function openPopupNewCard() { 
-    popupNewCard.classList.add('popup_opened');
-   titleInput.value = titleDisplay.textContent;
-    linkInput.value = linkDisplay.textContent;
+  popupNewCard.classList.add('popup_opened');
+  titleInput.value = titleDisplay.textContent;
+  linkInput.value = linkDisplay.textContent;
 }
   
 function closePopupNewCard() { 
-    popupNewCard.classList.remove('popup_opened');
+  popupNewCard.classList.remove('popup_opened');
 }
 
 function formSubmitCardHandler(evt) {
-    evt.preventDefault(); 
-    titleDisplay.textContent = titleInput.value
-    linkDisplay.textContent = linkInput.value
-    closePopupNewCard()
+  evt.preventDefault(); 
+  titleDisplay.textContent = titleInput.value
+  linkDisplay.textContent = linkInput.value
+  closePopupNewCard()
 }
 
 addButton.addEventListener('click', openPopupNewCard);
@@ -80,6 +80,9 @@ likeButtons.forEach(function(button) {
             button.classList.toggle('elements__button-like_active')
     )    
 })
+
+const elementsList = document.querySelector('.elements');
+const elementTemplate = document.querySelector('#cards-template');
 
 
 const initialCards = [
@@ -109,19 +112,9 @@ const initialCards = [
   }
 ];
 
-//const templateSelector = "#cards-template";
-//const placesContainer = document.querySelector(".places");
-
-//initialCards.forEach((places) => {
-  //const name = places.name;
-  //const link = places.link;
-  //const temp = new Card (name, link, templateSelector);
-  //placesContainer.prepend(temp.places);
-//});
-
- 
-//function submitUserCardHandler(evt) {
-  //  const temp = new Card(name, link, templateSelector);
-   // placesContainer.prepend(temp.element);
-   // data.closePopup(data.popupAdd);
-//}
+initialCards.forEach((element) => {
+  const initialCardElement = addCard.content.querySelector('.elements__item').cloneNoode(true);
+  initialCardElement.querySelector('.elements__title').textContent = element.name;
+  initialCardElement.querySelector('.elements__image').href = element.link;
+  ulPlace.append(initialCardElement);
+})
