@@ -1,4 +1,4 @@
-.places__button-delete {
+.elements__button-delete {
     background-image: url(../../../images/delete_button.svg);
     display: block;
     width: 19px;
@@ -13,6 +13,6 @@
     z-index: 2;
 }
 
-.places__button-delete:hover {
+.elements__button-delete:hover {
     opacity: .5;
 }

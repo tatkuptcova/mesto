@@ -1,14 +1,14 @@
-let editButton = document.querySelector('.profile__edit-button');
-let popupCloseProfile = document.querySelector('.popup__close_profile');
-let popupProfile = document.querySelector('.popup_profile');
+const editButton = document.querySelector('.profile__edit-button');
+const popupCloseProfile = document.querySelector('.popup__close_profile');
+const popupProfile = document.querySelector('.popup_profile');
 
-let formElementProfile = document.querySelector('.popup__form_profile');
+const formElementProfile = document.querySelector('.popup__form_profile');
 
-let nameInput = document.querySelector('.popup__item_input-name');
-let jobInput = document.querySelector('.popup__item_input-about');
+const nameInput = document.querySelector('.popup__item_input-name');
+const jobInput = document.querySelector('.popup__item_input-about');
 
-let nameDisplay = document.querySelector('#profileName');
-let jobDisplay = document.querySelector('#profileAbout');
+const nameDisplay = document.querySelector('#profileName');
+const jobDisplay = document.querySelector('#profileAbout');
 
 function openPopupProfile() { 
     popupProfile.classList.add('popup_opened');
@@ -32,17 +32,17 @@ popupCloseProfile.addEventListener('click', closePopupProfile);
 
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
-let addButton = document.querySelector('.profile__button-add');
-let popupCloseAdd = document.querySelector('.popup__close_add');
-let popupNewCard = document.querySelector('.popup_card');
+const addButton = document.querySelector('.profile__button-add');
+const popupCloseAdd = document.querySelector('.popup__close_add');
+const popupNewCard = document.querySelector('.popup_card');
 
-let formElementNewCard= document.querySelector('.popup__form_add');
+const formElementNewCard= document.querySelector('.popup__form_add');
 
-let titleInput = document.querySelector('.popup__item_input-title');
-let linkInput = document.querySelector('.popup__item_input-link');
+const titleInput = document.querySelector('.popup__item_input-title');
+const linkInput = document.querySelector('.popup__item_input-link');
 
-let titleDisplay = document.querySelector('#nameplace');
-let linkDisplay = document.querySelector('#place');
+const titleDisplay = document.querySelector('#nameplace');
+const linkDisplay = document.querySelector('#place');
 
 function openPopupNewCard() { 
     popupNewCard.classList.add('popup_opened');
@@ -66,17 +66,62 @@ popupCloseAdd.addEventListener('click', closePopupNewCard);
 
 formElementNewCard.addEventListener('submit', formSubmitCardHandler);
 
-let likeButtons = document.querySelectorAll('.places__button-like');
+const likeButtons = document.querySelectorAll('.elements__button-like');
 // for (let button of likeButtons) {
 //     button.addEventListener(
 //         'click', () => 
-//             button.classList.toggle('place__button-like_active')
+//             button.classList.toggle('elements__button-like_active')
 //     )    
 // }
 
 likeButtons.forEach(function(button) {
     button.addEventListener(
         'click', () => 
-            button.classList.toggle('places__button-like_active')
+            button.classList.toggle('elements__button-like_active')
     )    
 })
+
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+//const templateSelector = "#cards-template";
+//const placesContainer = document.querySelector(".places");
+
+//initialCards.forEach((places) => {
+  //const name = places.name;
+  //const link = places.link;
+  //const temp = new Card (name, link, templateSelector);
+  //placesContainer.prepend(temp.places);
+//});
+
+ 
+//function submitUserCardHandler(evt) {
+  //  const temp = new Card(name, link, templateSelector);
+   // placesContainer.prepend(temp.element);
+   // data.closePopup(data.popupAdd);
+//}
