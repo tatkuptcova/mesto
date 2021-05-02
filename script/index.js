@@ -65,13 +65,6 @@ popupCloseAdd.addEventListener('click', closePopupNewCard);
 
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 
-// for (let button of likeButtons) {
-//     button.addEventListener(
-//         'click', () => 
-//             button.classList.toggle('elements__button-like_active')
-//     )    
-// }
-
 const elementsList = document.querySelector('.elements__catalogue');
 const elementTemplate = document.querySelector('#cards-template');
 
@@ -113,6 +106,12 @@ function addCard(title, link) {
     'click', () => 
       likeButton.classList.toggle('elements__button-like_active')
   );
+  const deleteButton = initialCardElement.querySelector('.elements__button-delete');
+  deleteButton.addEventListener(
+    'click', () =>
+    initialCardElement.remove()
+  )
+  
   elementsList.prepend(initialCardElement);
 }
 
