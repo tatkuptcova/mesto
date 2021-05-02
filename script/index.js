@@ -102,7 +102,8 @@ function addCard(title, link) {
 
   cardElement.querySelector('.elements__title').textContent = title;
 
-  img = cardElement.querySelector('.elements__image')
+  const img = cardElement.querySelector('.elements__image');
+
   img.src = link;
   img.addEventListener(
     'click', () => 
