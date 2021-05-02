@@ -71,16 +71,16 @@ const elementTemplate = document.querySelector('#cards-template');
 
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Монт-Сан Мишель',
+    link: 'https://images.unsplash.com/photo-1596436831831-87dd84a69101?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80'
   },
   {
     name: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Мичиган',
+    link: 'https://images.unsplash.com/photo-1618767438211-11ffdb8e1861?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
   },
   {
     name: 'Камчатка',
@@ -98,24 +98,58 @@ const initialCards = [
 
 
 function addCard(title, link) {
-  const initialCardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
-  initialCardElement.querySelector('.elements__title').textContent = title;
-  initialCardElement.querySelector('.elements__image').src = link;
-  const likeButton = initialCardElement.querySelector('.elements__button-like');
+  const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
+
+  cardElement.querySelector('.elements__title').textContent = title;
+
+  img = cardElement.querySelector('.elements__image')
+  img.src = link;
+  img.addEventListener(
+    'click', () => 
+      openPopupPic(img.src)
+  )
+
+  
+  const likeButton = cardElement.querySelector('.elements__button-like');
   likeButton.addEventListener(
     'click', () => 
       likeButton.classList.toggle('elements__button-like_active')
   );
-  const deleteButton = initialCardElement.querySelector('.elements__button-delete');
+
+  const deleteButton = cardElement.querySelector('.elements__button-delete');
   deleteButton.addEventListener(
     'click', () =>
-    initialCardElement.remove()
+    cardElement.remove()
   )
   
-  elementsList.prepend(initialCardElement);
+  elementsList.prepend(cardElement);
 }
 
 initialCards.forEach((element) => {
   addCard(element.name, element.link);
 })
 
+const popupPic = document.querySelector('.popup__pic');
+const popupCloseImage = document.querySelector('.popup__close_image');
+const popupName = document.querySelector('.popup__name');
+
+popupCloseImage.addEventListener(
+  'click', () => 
+    closePopupPic()
+)
+
+
+function openPopupPic(link) {
+  popupPic.classList.add('popup_opened');
+  popupImage = document.querySelector('.popup__image');
+  popupImage.src = link
+}
+
+function closePopupPic() { 
+  popupPic.classList.remove('popup_opened');
+}
+
+//popupCloseImage.addEventListener('click', closePopupPic);
+popupPic.addEventListener('click', () => 
+  closePopupPic()
+);
