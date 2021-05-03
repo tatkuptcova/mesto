@@ -1,4 +1,4 @@
-.places__catalogue {
+.elements__catalogue {
     display: grid;
     margin: 0;
     grid-template-columns: repeat(3, 282px);
@@ -12,14 +12,14 @@
 }
 
 @media (max-width: 1023px) {
-    .places__catalogue{
+    .elements__catalogue{
       grid-template-columns: repeat(2, 282px);
       grid-template-rows: repeat(3, 361px);
     }
   }
   
   @media (max-width: 767px) {
-    .places__catalogue {
+    .elements__catalogue {
       grid-template-columns: repeat(1, 282px);
       grid-template-rows: repeat(6, 361px);
       gap: 20px;
