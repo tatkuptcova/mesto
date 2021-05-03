@@ -1,4 +1,4 @@
-.places__button-like {
+.elements__button-like {
     background-image: url(../../../images/like_button.svg);
     border: none;
     min-width: 22px;
@@ -6,6 +6,6 @@
     outline: none;
 }
 
-.places__button-like:hover {
+.elements__button-like:hover {
     opacity: .5;
 }

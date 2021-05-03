@@ -1,52 +1,157 @@
-let editButton = document.querySelector('.profile__edit-button');
-let popupClose = document.querySelector('.popup__close');
-let popup = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__edit-button');
+const popupCloseProfile = document.querySelector('.popup__close_profile');
+const popupProfile = document.querySelector('.popup_profile');
 
-let formElement = document.querySelector('.popup__form');
+const formElementProfile = document.querySelector('.popup__form_profile');
 
-let nameInput = document.querySelector('.popup__item_input-name');
-let jobInput = document.querySelector('.popup__item_input-about');
+const nameInput = document.querySelector('.popup__item_input-name');
+const jobInput = document.querySelector('.popup__item_input-about');
 
-let nameDisplay = document.querySelector('#profileName');
-let jobDisplay = document.querySelector('#profileAbout');
+const nameDisplay = document.querySelector('#profileName');
+const jobDisplay = document.querySelector('#profileAbout');
 
-function openPopup() { 
-    popup.classList.add('popup_opened');
+function openPopupProfile() { 
+    popupProfile.classList.add('popup_opened');
     nameInput.value = nameDisplay.textContent;
     jobInput.value = jobDisplay.textContent;
 }
   
-function closePopup() { 
-    popup.classList.remove('popup_opened');
+function closePopupProfile() { 
+    popupProfile.classList.remove('popup_opened');
 }
 
-
-function formSubmitHandler(evt) {
+function formSubmitProfileHandler(evt) {
     evt.preventDefault(); 
     nameDisplay.textContent = nameInput.value
     jobDisplay.textContent = jobInput.value
-    closePopup()
+    closePopupProfile()
 }
 
+editButton.addEventListener('click', openPopupProfile);
+popupCloseProfile.addEventListener('click', closePopupProfile);
 
-editButton.addEventListener('click', openPopup);
-popupClose.addEventListener('click', closePopup);
+formElementProfile.addEventListener('submit', formSubmitProfileHandler);
+
+const addButton = document.querySelector('.profile__button-add');
+const popupCloseAdd = document.querySelector('.popup__close_add');
+const popupNewCard = document.querySelector('.popup_card');
+
+const formElementNewCard= document.querySelector('.popup__form_add');
+
+const titleInput = document.querySelector('.popup__item_input-title');
+const linkInput = document.querySelector('.popup__item_input-link');
+
+const titleDisplay = document.querySelector('#nameplace');
+const linkDisplay = document.querySelector('#place');
+
+function openPopupNewCard() { 
+  popupNewCard.classList.add('popup_opened');
+  titleInput.value = titleDisplay.textContent;
+  linkInput.value = linkDisplay.textContent;
+}
+  
+function closePopupNewCard() { 
+  popupNewCard.classList.remove('popup_opened');
+}
+
+function formSubmitNewCardHandler(evt) {
+  evt.preventDefault();
+  addCard(titleInput.value, linkInput.value)
+  closePopupNewCard()
+}
+
+addButton.addEventListener('click', openPopupNewCard);
+popupCloseAdd.addEventListener('click', closePopupNewCard);
+
+formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
+
+const elementsList = document.querySelector('.elements__catalogue');
+const elementTemplate = document.querySelector('#cards-template');
 
 
-formElement.addEventListener('submit', formSubmitHandler);
+const initialCards = [
+  {
+    name: 'Монт-Сан Мишель',
+    link: 'https://images.unsplash.com/photo-1596436831831-87dd84a69101?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Мичиган',
+    link: 'https://images.unsplash.com/photo-1618767438211-11ffdb8e1861?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 
-let likeButtons = document.querySelectorAll('.places__button-like');
-// for (let button of likeButtons) {
-//     button.addEventListener(
-//         'click', () => 
-//             button.classList.toggle('place__button-like_active')
-//     )    
-// }
+function addCard(title, link) {
+  const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
 
-likeButtons.forEach(function(button) {
-    button.addEventListener(
-        'click', () => 
-            button.classList.toggle('places__button-like_active')
-    )    
+  const caption = cardElement.querySelector('.elements__title');
+  caption.innerHTML = title
+
+  const img = cardElement.querySelector('.elements__image');
+  
+  img.src = link;
+  img.addEventListener(
+    'click', () => 
+      openPopupPic(img.src, caption.innerHTML)
+  )
+
+  const likeButton = cardElement.querySelector('.elements__button-like');
+  likeButton.addEventListener(
+    'click', () => 
+      likeButton.classList.toggle('elements__button-like_active')
+  );
+
+  const deleteButton = cardElement.querySelector('.elements__button-delete');
+  deleteButton.addEventListener(
+    'click', () =>
+    cardElement.remove()
+  )
+  
+  elementsList.prepend(cardElement);
+}
+
+initialCards.forEach((element) => {
+  addCard(element.name, element.link);
 })
+
+const popupPic = document.querySelector('.popup__pic');
+const popupCloseImage = document.querySelector('.popup__close_image');
+
+popupCloseImage.addEventListener(
+  'click', () => 
+    closePopupPic()
+)
+
+
+function openPopupPic(link, title) {
+  popupPic.classList.add('popup_opened');
+  popupImage = document.querySelector('.popup__image');
+  popupImage.src = link
+  popupCaption = document.querySelector('.popup__caption');
+  popupCaption.innerHTML = title
+}
+
+function closePopupPic() { 
+  popupPic.classList.remove('popup_opened');
+}
+
+//popupCloseImage.addEventListener('click', closePopupPic);
+popupPic.addEventListener('click', () => 
+  closePopupPic()
+);
