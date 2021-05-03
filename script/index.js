@@ -111,14 +111,6 @@ function addCard(title, link) {
       openPopupPic(img.src, caption.innerHTML)
   )
 
- //cardElement.querySelector('.elements__title').textContent = title;  
-  
- //  caption.addEventListener(
- //   'click', () =>
- //     openPopupPic(caption.innerHTML)
- //)
-
-
   const likeButton = cardElement.querySelector('.elements__button-like');
   likeButton.addEventListener(
     'click', () => 
@@ -140,7 +132,6 @@ initialCards.forEach((element) => {
 
 const popupPic = document.querySelector('.popup__pic');
 const popupCloseImage = document.querySelector('.popup__close_image');
-//const popupCaption = document.querySelector('.popup__caption');
 
 popupCloseImage.addEventListener(
   'click', () => 
