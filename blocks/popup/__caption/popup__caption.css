@@ -1,4 +1,6 @@
-.popup__name {
+.popup__caption {
+	/*width: 291px;
+    height: 12px;*/
     font-weight: normal;
 	font-size: 12px;
 	line-height: 15px;

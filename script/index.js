@@ -100,17 +100,25 @@ const initialCards = [
 function addCard(title, link) {
   const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
 
-  cardElement.querySelector('.elements__title').textContent = title;
+  const caption = cardElement.querySelector('.elements__title');
+  caption.innerHTML = title
 
   const img = cardElement.querySelector('.elements__image');
-
+  
   img.src = link;
   img.addEventListener(
     'click', () => 
-      openPopupPic(img.src)
+      openPopupPic(img.src, caption.innerHTML)
   )
 
+ //cardElement.querySelector('.elements__title').textContent = title;  
   
+ //  caption.addEventListener(
+ //   'click', () =>
+ //     openPopupPic(caption.innerHTML)
+ //)
+
+
   const likeButton = cardElement.querySelector('.elements__button-like');
   likeButton.addEventListener(
     'click', () => 
@@ -132,7 +140,7 @@ initialCards.forEach((element) => {
 
 const popupPic = document.querySelector('.popup__pic');
 const popupCloseImage = document.querySelector('.popup__close_image');
-const popupName = document.querySelector('.popup__name');
+//const popupCaption = document.querySelector('.popup__caption');
 
 popupCloseImage.addEventListener(
   'click', () => 
@@ -140,10 +148,12 @@ popupCloseImage.addEventListener(
 )
 
 
-function openPopupPic(link) {
+function openPopupPic(link, title) {
   popupPic.classList.add('popup_opened');
   popupImage = document.querySelector('.popup__image');
   popupImage.src = link
+  popupCaption = document.querySelector('.popup__caption');
+  popupCaption.innerHTML = title
 }
 
 function closePopupPic() { 
