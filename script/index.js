@@ -130,7 +130,7 @@ initialCards.forEach((element) => {
   addCard(element.name, element.link);
 })
 
-const popupPic = document.querySelector('.popup__pic');
+const popupPic = document.querySelector('.popup_pic');
 const popupCloseImage = document.querySelector('.popup__close_image');
 
 popupCloseImage.addEventListener(
