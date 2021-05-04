@@ -29,8 +29,7 @@ const initialCards = [
   }
 ];
 
-
-function addCard(title, link) {
+function createCard(title, link) {
   const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
 
   const caption = cardElement.querySelector('.elements__title');
@@ -39,9 +38,11 @@ function addCard(title, link) {
   const img = cardElement.querySelector('.elements__image');
   
   img.src = link;
+  img.alt = title;
+
   img.addEventListener(
     'click', () => 
-      openPopupPic(img.src, caption.textContent)
+      openPopupPic(link, title)
   )
 
   const likeButton = cardElement.querySelector('.elements__button-like');
@@ -56,9 +57,15 @@ function addCard(title, link) {
     cardElement.remove()
   )
   
+  return cardElement
+}
+
+
+function addCard(cardElement) { 
   elementsList.prepend(cardElement);
 }
 
 initialCards.forEach((element) => {
-  addCard(element.name, element.link);
+  const cardElement = createCard(element.name, element.link);
+  addCard(cardElement);
 })

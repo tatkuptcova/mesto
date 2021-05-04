@@ -56,7 +56,8 @@ function closePopupNewCard() {
 
 function formSubmitNewCardHandler(evt) {
   evt.preventDefault();
-  addCard(titleInput.value, linkInput.value)
+  const cardElement = createCard(titleInput.value,  linkInput.value);
+  addCard(cardElement);
   closePopupNewCard()
 }
 
@@ -69,6 +70,9 @@ formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 
 const popupPic = document.querySelector('.popup_pic');
 const popupCloseImage = document.querySelector('.popup__close_image');
+const popupImage = document.querySelector('.popup__image');
+const popupCaption = document.querySelector('.popup__caption');
+
 
 popupCloseImage.addEventListener(
   'click', () => 
@@ -78,9 +82,9 @@ popupCloseImage.addEventListener(
 
 function openPopupPic(link, title) {
   popupPic.classList.add('popup_opened');
-  popupImage = document.querySelector('.popup__image');
+  // popupImage = document.querySelector('.popup__image');
   popupImage.src = link
-  popupCaption = document.querySelector('.popup__caption');
+  // popupCaption = document.querySelector('.popup__caption');
   popupCaption.textContent = title
 }
 
