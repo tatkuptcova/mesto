@@ -16,19 +16,15 @@ function openPopupProfile() {
     jobInput.value = jobDisplay.textContent;
 }
   
-function closePopupProfile() { 
-    popupProfile.classList.remove('popup_opened');
-}
-
 function formSubmitProfileHandler(evt) {
     evt.preventDefault(); 
     nameDisplay.textContent = nameInput.value
     jobDisplay.textContent = jobInput.value
-    closePopupProfile()
+    closePopup(popupProfile)
 }
 
 editButton.addEventListener('click', openPopupProfile);
-popupCloseProfile.addEventListener('click', closePopupProfile);
+popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
@@ -49,9 +45,9 @@ function openPopupNewCard() {
   titleInput.value = titleDisplay.textContent;
   linkInput.value = linkDisplay.textContent;
 }
-  
-function closePopupNewCard() { 
-  popupNewCard.classList.remove('popup_opened');
+
+function closePopup(popup) { 
+  popup.classList.remove('popup_opened');
 }
 
 function formSubmitNewCardHandler(evt) {
@@ -62,7 +58,6 @@ function formSubmitNewCardHandler(evt) {
 }
 
 addButton.addEventListener('click', openPopupNewCard);
-popupCloseAdd.addEventListener('click', closePopupNewCard);
 
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 
@@ -74,10 +69,8 @@ const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
 
-popupCloseImage.addEventListener(
-  'click', () => 
-    closePopupPic()
-)
+popupCloseImage.addEventListener('click', () => closePopup(popupPic))
+popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 
 
 function openPopupPic(link, title) {
@@ -91,8 +84,3 @@ function openPopupPic(link, title) {
 function closePopupPic() { 
   popupPic.classList.remove('popup_opened');
 }
-
-//popupCloseImage.addEventListener('click', closePopupPic);
-popupPic.addEventListener('click', () => 
-  closePopupPic
-);
