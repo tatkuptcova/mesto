@@ -47,6 +47,22 @@ function openPopupNewCard() {
   linkInput.value = linkDisplay.textContent;
 }
 
+function formSubmitNewCardHandler(evt) {
+  evt.preventDefault();
+  const cardElement = createCard(titleInput.value,  linkInput.value);
+  addCard(cardElement);
+  closePopup(popupNewCard)
+}
+
+function openPopupPic(link, title) {
+  // popupImage = document.querySelector('.popup__image');
+  popupImage.src = link
+  // popupCaption = document.querySelector('.popup__caption');
+  popupCaption.textContent = title
+  openPopup(popupPic)
+}
+
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
@@ -56,12 +72,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function formSubmitNewCardHandler(evt) {
-  evt.preventDefault();
-  const cardElement = createCard(titleInput.value,  linkInput.value);
-  addCard(cardElement);
-  closePopup(popupNewCard)
-}
 
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
@@ -75,12 +85,3 @@ addButton.addEventListener('click', ()  => openPopup(popupNewCard));
 popupCloseImage.addEventListener('click', () => closePopup(popupPic))
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
-
-
-function openPopupPic(link, title) {
-  // popupImage = document.querySelector('.popup__image');
-  popupImage.src = link
-  // popupCaption = document.querySelector('.popup__caption');
-  popupCaption.textContent = title
-  openPopup(popupPic)
-}
