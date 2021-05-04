@@ -90,5 +90,5 @@ function closePopupPic() {
 
 //popupCloseImage.addEventListener('click', closePopupPic);
 popupPic.addEventListener('click', () => 
-  closePopupPic()
+  closePopupPic
 );
