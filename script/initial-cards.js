@@ -40,10 +40,7 @@ function createCard(title, link) {
   img.src = link;
   img.alt = title;
 
-  img.addEventListener(
-    'click', () => 
-      openPopupPic(link, title)
-  )
+  img.addEventListener('click', () =>  openPopupPic(link, title))
 
   const likeButton = cardElement.querySelector('.elements__button-like');
   likeButton.addEventListener(
