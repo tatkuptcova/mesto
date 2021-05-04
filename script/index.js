@@ -52,6 +52,7 @@ function formSubmitNewCardHandler(evt) {
   const cardElement = createCard(titleInput.value,  linkInput.value);
   addCard(cardElement);
   closePopup(popupNewCard)
+  document.querySelector('.popup__form_add').reset();
 }
 
 function openPopupPic(link, title) {
@@ -75,13 +76,12 @@ function closePopup(popup) {
 
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
-
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 
 
 editButton.addEventListener('click', () => openPopup(popupProfile));
 addButton.addEventListener('click', ()  => openPopup(popupNewCard));
 
-popupCloseImage.addEventListener('click', () => closePopup(popupPic))
+popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
