@@ -68,15 +68,15 @@ function formSubmitProfileHandler(evt) {
     nameDisplay.textContent = nameInput.value
     jobDisplay.textContent = jobInput.value
     closePopup(popupProfile)
+    formElementProfile.reset()
 }
  
-
 function formSubmitNewCardHandler(evt) {
   evt.preventDefault();
   const cardElement = createCard(titleInput.value,  linkInput.value);
   addCard(cardElement);
   closePopup(popupNewCard)
-  formElementNewCard.reset();
+  formElementNewCard.reset()
 }
 
 
