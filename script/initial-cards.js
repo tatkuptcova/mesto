@@ -1,6 +1,3 @@
-const elementsList = document.querySelector('.elements__catalogue');
-const elementTemplate = document.querySelector('#cards-template');
-
 const initialCards = [
   {
     name: 'Монт-Сан Мишель',
@@ -28,38 +25,6 @@ const initialCards = [
   }
 ];
 
-function createCard(title, link) {
-  const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
-
-  const caption = cardElement.querySelector('.elements__title');
-  caption.textContent = title
-
-  const img = cardElement.querySelector('.elements__image');
-  
-  img.src = link;
-  img.alt = title;
-
-  img.addEventListener('click', () =>  openPopupPic(link, title))
-
-  const likeButton = cardElement.querySelector('.elements__button-like');
-  likeButton.addEventListener(
-    'click', () => 
-      likeButton.classList.toggle('elements__button-like_active')
-  );
-
-  const deleteButton = cardElement.querySelector('.elements__button-delete');
-  deleteButton.addEventListener(
-    'click', () =>
-    cardElement.remove()
-  )
-  
-  return cardElement
-}
-
-
-function addCard(cardElement) { 
-  elementsList.prepend(cardElement);
-}
 
 initialCards.forEach((element) => {
   const cardElement = createCard(element.name, element.link);
