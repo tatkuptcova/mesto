@@ -1,7 +1,6 @@
 const elementsList = document.querySelector('.elements__catalogue');
 const elementTemplate = document.querySelector('#cards-template');
 
-
 const initialCards = [
   {
     name: 'Монт-Сан Мишель',

@@ -14,7 +14,7 @@ const addButton = document.querySelector('.profile__button-add');
 const popupCloseAdd = document.querySelector('.popup__close_add');
 const popupNewCard = document.querySelector('.popup_card');
 
-const formElementNewCard= document.querySelector('.popup__form_add');
+const formElementNewCard = document.querySelector('.popup__form_add');
 
 const titleInput = document.querySelector('.popup__item_input-title');
 const linkInput = document.querySelector('.popup__item_input-link');
@@ -29,10 +29,6 @@ const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
 
-function openPopupProfile() { 
-    nameInput.value = nameDisplay.textContent;
-    jobInput.value = jobDisplay.textContent;
-}
   
 function formSubmitProfileHandler(evt) {
     evt.preventDefault(); 
@@ -41,18 +37,12 @@ function formSubmitProfileHandler(evt) {
     closePopup(popupProfile)
 }
  
-
-function openPopupNewCard() { 
-  titleInput.value = titleDisplay.textContent;
-  linkInput.value = linkDisplay.textContent;
-}
-
 function formSubmitNewCardHandler(evt) {
   evt.preventDefault();
   const cardElement = createCard(titleInput.value,  linkInput.value);
   addCard(cardElement);
   closePopup(popupNewCard)
-  document.querySelector('.popup__form_add').reset();
+  formElementNewCard.reset();
 }
 
 function openPopupPic(link, title) {
@@ -60,6 +50,7 @@ function openPopupPic(link, title) {
   popupImage.src = link
   // popupCaption = document.querySelector('.popup__caption');
   popupCaption.textContent = title
+  popupCaption.alt = title
   openPopup(popupPic)
 }
 
