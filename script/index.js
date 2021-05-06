@@ -95,10 +95,9 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-
 function closePopup(popup) { 
   popup.classList.remove('popup_opened');
-  popup.querySelector('form').reset()
+  popup.querySelectorAll('form').forEach((form) => form.reset())
 }
 
 initialCards.forEach((element) => {
