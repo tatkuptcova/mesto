@@ -98,9 +98,13 @@ function openPopup(popup) {
 
 function closePopup(popup) { 
   popup.classList.remove('popup_opened');
+  popup.querySelector('form').reset()
 }
 
-
+initialCards.forEach((element) => {
+  const cardElement = createCard(element.name, element.link);
+  addCard(cardElement);
+})
 
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 

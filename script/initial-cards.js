@@ -26,7 +26,3 @@ const initialCards = [
 ];
 
 
-initialCards.forEach((element) => {
-  const cardElement = createCard(element.name, element.link);
-  addCard(cardElement);
-})
