@@ -71,6 +71,7 @@ function formSubmitProfileHandler(evt) {
     formElementProfile.reset()
 }
  
+
 function formSubmitNewCardHandler(evt) {
   evt.preventDefault();
   const cardElement = createCard(titleInput.value,  linkInput.value);
