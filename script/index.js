@@ -58,6 +58,15 @@ function createCard(title, link) {
   
   return cardElement
 }
+ 
+const overlayClick = document.querySelectorAll('.popup');
+for (let i = 0; i < overlayClick.length; i++) {
+  overlayClick[i].addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      event.target.closest('.popup').classList.remove('popup_opened');
+    }
+  });
+}
 
 function addCard(cardElement) { 
   elementsList.prepend(cardElement);
@@ -93,9 +102,17 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
+
+
+function closePopup(popup) {
+  Popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
+}
+
+
 function closePopup(popup) { 
   popup.classList.remove('popup_opened');
-  popup.querySelectorAll('form').forEach((form) => form.reset())
+  popup.querySelectorAll('form').forEach((form) => form.reset());
 }
 
 initialCards.forEach((element) => {
