@@ -59,6 +59,7 @@
             maxlength="40"
             required
           >
+          <span id="name-error" class="popup__input-error"></span>
           <input
             type="text"
             id="about-input"
@@ -70,6 +71,7 @@
             maxlength="200"
             required
           >
+          <span id="about-error" class="popup__input-error"></span>
           <button type="submit" class="popup__button-submit popup__button-submit_profile">Сохранить</button>
         </form>
       </div>
@@ -79,7 +81,7 @@
       <div class="popup__content popup__content_add">
         <button type="button" aria-label="Закрыть" class="button popup__close popup__close_add"></button>
         <h2 class="popup__title"> Новое место</h2>
-        <form name="add" class="popup__form popup__form_add" action="#" method="POST">
+        <form name="add" class="popup__form popup__form_add" action="#" method="POST" novalidate>
           <input
             type="text"
             id="nameplace"
@@ -91,6 +93,7 @@
             maxlength="30"
             required
           >
+          <span id="title-error" class="popup__input-error"></span>
           <input
             type="url"
             id="place"
@@ -100,6 +103,7 @@
             placeholder="Ссылка на картинку"
             required
           >
+          <span id="link-error" class="popup__input-error"></span>
           <button type="submit" class="popup__button-submit popup__button-submit_add">Создать</button>
         </form>
       </div>
@@ -125,6 +129,7 @@
     </template>
 
     <script src="./script/initial-cards.js"></script> 
+    <script src="./script/validate.js"></script>
     <script src="./script/index.js"></script>  
     
   

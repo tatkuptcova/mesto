@@ -16,6 +16,13 @@
     background-color: rgba(0,0,0,.8);
 }
 
+.popup__button-submit:disabled {
+    background-color: #E5E5E5;
+    border: 1px solid #000;
+    color: #000;
+    opacity: .2;
+}
+
 @media screen and (max-width: 375px){
     .popup__button-submit {
         margin-top: 15px;
