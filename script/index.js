@@ -4,8 +4,8 @@ const popupProfile = document.querySelector('.popup_profile');
 
 const formElementProfile = document.querySelector('.popup__form_profile');
 
-const nameInput = document.querySelector('.popup__item_input-name');
-const jobInput = document.querySelector('.popup__item_input-about');
+const nameInput = document.querySelector('.popup__input_edit-name');
+const jobInput = document.querySelector('.popup__input_edit-about');
 
 const nameDisplay = document.querySelector('#profileName');
 const jobDisplay = document.querySelector('#profileAbout');
@@ -16,8 +16,8 @@ const popupNewCard = document.querySelector('.popup_card');
 
 const formElementNewCard = document.querySelector('.popup__form_add');
 
-const titleInput = document.querySelector('.popup__item_input-title');
-const linkInput = document.querySelector('.popup__item_input-link');
+const titleInput = document.querySelector('.popup__input_add-title');
+const linkInput = document.querySelector('.popup__input_add-link');
 
 const titleDisplay = document.querySelector('#nameplace');
 const linkDisplay = document.querySelector('#place');
@@ -59,7 +59,13 @@ function createCard(title, link) {
   return cardElement
 }
 
-
+const config = {
+  formSelector:'.popup__form',
+  inputSelector:'.popup__input',
+  submitButtomSelector:'.popup__button-submit',
+  inputErrorClass:'.popup__input-error',
+  errorActiveClass:'.popup__input-error_active',
+};
  
 const overlayClick = document.querySelectorAll('.popup');
 for (let i = 0; i < overlayClick.length; i++) {
@@ -133,3 +139,5 @@ addButton.addEventListener('click', ()  => openPopup(popupNewCard));
 popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
+
+enableValidation(config);

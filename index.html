@@ -51,27 +51,28 @@
           <input
             type="text"
             id="name-input"
-            class="popup__item popup__item_input-name"
+            class="popup__input popup__input_edit-name"
             name="name"
-            value="Жак-Ив Кусто"
+            value=""
             placeholder="Имя"
             minlength="2"
             maxlength="40"
+            pattern="[A-Za-zА-ЯЁа-яё -]{1,}"
             required
           >
-          <span id="name-error" class="popup__input-error"></span>
+          <span id="name-error" class="popup__input-error">Вы пропустили это поле</span>
           <input
             type="text"
             id="about-input"
-            class="popup__item popup__item_input-about"
+            class="popup__input popup__input_edit-about"
             name="about"
-            value="Исследователь океана"
+            value=""
             placeholder="О себе"
             minlength="2"
             maxlength="200"
             required
           >
-          <span id="about-error" class="popup__input-error"></span>
+          <span id="about-error" class="popup__input-error">Вы пропустили это поле</span>
           <button type="submit" class="popup__button-submit popup__button-submit_profile">Сохранить</button>
         </form>
       </div>
@@ -85,7 +86,7 @@
           <input
             type="text"
             id="nameplace"
-            class="popup__item popup__item_input-title"
+            class="popup__input popup__input_add-title"
             name="name"
             value=""
             placeholder="Название"
@@ -93,17 +94,17 @@
             maxlength="30"
             required
           >
-          <span id="title-error" class="popup__input-error"></span>
+          <span id="title-error" class="popup__input-error">Вы пропустили это поле</span>
           <input
             type="url"
             id="place"
-            class="popup__item popup__item_input-link"
+            class="popup__input popup__input_add-link"
             name="link"
             value=""
             placeholder="Ссылка на картинку"
             required
           >
-          <span id="link-error" class="popup__input-error"></span>
+          <span id="link-error" class="popup__input-error">Введите адрес сайта</span>
           <button type="submit" class="popup__button-submit popup__button-submit_add">Создать</button>
         </form>
       </div>
