@@ -20,17 +20,16 @@ const hideInputError = (formElement, inputElement, config) => {
 
 const checkInputValidity = (formElement, inputElement, config) => {
     //check input is valid
-  if (inputElement.validity.valid) {
-      hideInputError(formElement, inputElement, config);
-  }else{
-      showInputError(formElement, inputElement, config);
-  }
+    if (inputElement.validity.valid) {
+        hideInputError(formElement, inputElement, config);
+    }else{
+        showInputError(formElement, inputElement, config);
+    }
     // if valid, hide error else show error
-
 }
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some(inputElement => !inputElement.validity.valid)
+    return inputList.some(inputElement => !inputElement.validity.valid)
 }
 
 const toggleButtonState = (buttonElement, inputList) => {
@@ -45,17 +44,17 @@ const toggleButtonState = (buttonElement, inputList) => {
 
 }
 
-const setEventListeners = (formElement, config) => {
+function setEventListeners(formElement, config) {
     const {inputSelector, submitButtomSelector, ...restConfig} = config;
 //   prevend page reload on form submit
     formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
     })
 
-      // find all inputs
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  //find submit button
-  const buttonElement = formElement.querySelector(submitButtomSelector);
+    // find all inputs
+    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+    //find submit button
+    const buttonElement = formElement.querySelector(submitButtomSelector);
 
 
   // add listeners for each input
@@ -69,17 +68,17 @@ const setEventListeners = (formElement, config) => {
         toggleButtonState(buttonElement, inputList);
        });
     });
-       //  set initial button state
-       toggleButtonState(buttonElement, inputList); 
+    //  set initial button state
+    toggleButtonState(buttonElement, inputList);
 
 }
 
 const enableValidation = (config) => {
     const {formSelector, ...restConfig} = config;
     // find all forms 
- const formList = Array.from(document.querySelectorAll(formSelector));
+    const formList = Array.from(document.querySelectorAll(formSelector));
     // set event listeners each form
- formList.forEach((formElement) => {
-     setEventListeners(formElement,restConfig);
- })
+    formList.forEach((formElement) => {
+        setEventListeners(formElement,restConfig);
+    })
 };
