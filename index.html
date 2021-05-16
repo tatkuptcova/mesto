@@ -57,7 +57,7 @@
             placeholder="Имя"
             minlength="2"
             maxlength="40"
-            pattern="[A-Za-zА-ЯЁа-яё -]{1,}"
+            pattern="[A-Za-zА-ЯЁа-яё\s-]{2,40}"
             required
           >
           <span id="name-input-error" class="popup__input-error"></span>
@@ -70,6 +70,7 @@
             placeholder="О себе"
             minlength="2"
             maxlength="200"
+            pattern=".{2,200}"
             required
           >
           <span id="about-input-error" class="popup__input-error"></span>
@@ -85,7 +86,7 @@
         <form name="add" class="popup__form popup__form_add" action="#" method="POST" novalidate>
           <input
             type="text"
-            id="nameplace"
+            id="nameplace-input"
             class="popup__input popup__input_add-title"
             name="name"
             value=""
@@ -94,17 +95,17 @@
             maxlength="30"
             required
           >
-          <span id="title-error" class="popup__input-error">Вы пропустили это поле</span>
+          <span id="nameplace-input-error" class="popup__input-error"></span>
           <input
             type="url"
-            id="place"
+            id="link-input"
             class="popup__input popup__input_add-link"
             name="link"
             value=""
             placeholder="Ссылка на картинку"
             required
           >
-          <span id="link-error" class="popup__input-error">Введите адрес сайта</span>
+          <span id="link-input-error" class="popup__input-error"></span>
           <button type="submit" class="popup__button-submit popup__button-submit_add">Создать</button>
         </form>
       </div>
