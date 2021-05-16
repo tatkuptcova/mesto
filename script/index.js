@@ -60,11 +60,11 @@ function createCard(title, link) {
 }
 
 const config = {
-    formSelector:'.popup__form',
-    inputSelector:'.popup__input',
-    submitButtomSelector:'.popup__button-submit',
-    inputErrorClass:'.popup__input-error',
-    errorActiveClass:'.popup__input-error_active',
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtomSelector: '.popup__button-submit',
+    inputErrorClass: '.popup__input-error',
+    errorActiveClass: '.popup__input-error_active',
 };
  
 const overlayClick = document.querySelectorAll('.popup');
