@@ -9,7 +9,7 @@
 }
 
 .popup__input-error_active {
-    opacity: 1;
+    opacity: 1;    
 }
 
 .popup__error:last-of-type {

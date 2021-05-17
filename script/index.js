@@ -64,7 +64,7 @@ const config = {
     inputSelector: '.popup__input',
     submitButtomSelector: '.popup__button-submit',
     inputErrorClass: '.popup__input-error',
-    errorActiveClass: '.popup__input-error_active',
+    errorActiveClass: 'popup__input-error_active',
 };
  
 const overlayClick = document.querySelectorAll('.popup');
@@ -107,7 +107,7 @@ function openPopupPic(link, title) {
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener("keydown", handleEscClose);;
+    document.addEventListener('keydown', handleEscClose);;
 }
 
 
@@ -115,11 +115,12 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
     popup.querySelectorAll('form').forEach((form) => form.reset());
     document.removeEventListener("keydown", handleEscClose);
+    
 }
   
 function handleEscClose(evt) {
-    if (evt.key === "Escape") {
-       closePopup(document.querySelector(".popup_opened"));
+    if (evt.key === 'Escape') {
+       closePopup(document.querySelector('.popup_opened'));
     }
 }
 
