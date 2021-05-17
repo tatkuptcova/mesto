@@ -47,7 +47,7 @@ const toggleButtonState = (buttonElement, inputList) => {
 }
 
 function setEventListeners(formElement, config) {
-    const {inputSelector, submitButtomSelector, ...restConfig} = config;
+    const {inputSelector, submitButtonSelector, ...restConfig} = config;
     // prevend page reload on form submit
     formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
@@ -56,7 +56,7 @@ function setEventListeners(formElement, config) {
     // find all inputs
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     //find submit button
-    const buttonElement = formElement.querySelector(submitButtomSelector);
+    const buttonElement = formElement.querySelector(submitButtonSelector);
 
 
     // add listeners for each input

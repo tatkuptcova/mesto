@@ -62,7 +62,7 @@ function createCard(title, link) {
 const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
-    submitButtomSelector: '.popup__button-submit',
+    submitButtonSelector: '.popup__button-submit',
     inputErrorClass: '.popup__input-error',
     errorActiveClass: 'popup__input-error_active',
 };
@@ -75,6 +75,8 @@ for (let i = 0; i < overlayClick.length; i++) {
         }
     });
 }
+
+const submit = document.querySelector('.popup__button-submit');
 
 function addCard(cardElement) { 
     elementsList.prepend(cardElement);
@@ -107,14 +109,14 @@ function openPopupPic(link, title) {
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener('keydown', handleEscClose);;
+    document.addEventListener('keydown', handleEscClose);
 }
 
 
 function closePopup(popup) { 
     popup.classList.remove('popup_opened');
     popup.querySelectorAll('form').forEach((form) => form.reset());
-    document.removeEventListener("keydown", handleEscClose);
+    document.removeEventListener('keydown', handleEscClose);
     
 }
   
