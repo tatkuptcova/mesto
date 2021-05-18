@@ -113,14 +113,13 @@ function openPopup(popup) {
 
 function closePopup(popup) { 
     popup.classList.remove('popup_opened');
-    popup.querySelectorAll('form').forEach((form) => {
+    const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
+    popup.querySelectorAll(formSelector).forEach((form) => {
         form.reset()
-        form.querySelectorAll(isValid.submitButtonSelector).forEach((submit) => {
-            submit.disabled = true;
-        });
+        inputElements = Array.from(form.querySelectorAll(inputSelector))
+        toggleButtonState(form.querySelectorAll(submitButtonSelector), inputElements)
         
-        form.querySelectorAll('.' + isValid.inputErrorClass).forEach((inputElement) => {
-            const {_form, _input, _submit, ...rest} = isValid
+        inputElements.forEach((inputElement) => {
             hideInputError(form, inputElement, rest)
         });
     });
