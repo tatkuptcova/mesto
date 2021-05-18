@@ -59,11 +59,11 @@ function createCard(title, link) {
     return cardElement
 }
 
-const config = {
+const isValid = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button-submit',
-    inputErrorClass: '.popup__input-error',
+    inputErrorClass: 'popup__input_type_error',
     errorActiveClass: 'popup__input-error_active',
 };
  
@@ -75,8 +75,6 @@ for (let i = 0; i < overlayClick.length; i++) {
         }
     });
 }
-
-const submit = document.querySelector('.popup__button-submit');
 
 function addCard(cardElement) { 
     elementsList.prepend(cardElement);
@@ -143,4 +141,4 @@ popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
-enableValidation(config);
+enableValidation(isValid);
