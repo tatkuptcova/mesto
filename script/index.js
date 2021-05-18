@@ -110,14 +110,14 @@ function openPopup(popup) {
     document.addEventListener('keydown', handleEscClose);
 }
 
-
 function closePopup(popup) { 
     popup.classList.remove('popup_opened');
     const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
     popup.querySelectorAll(formSelector).forEach((form) => {
         form.reset()
         inputElements = Array.from(form.querySelectorAll(inputSelector))
-        toggleButtonState(form.querySelectorAll(submitButtonSelector), inputElements)
+
+        toggleButtonState(form.querySelector(submitButtonSelector), inputElements)
         
         inputElements.forEach((inputElement) => {
             hideInputError(form, inputElement, rest)
