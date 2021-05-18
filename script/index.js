@@ -118,15 +118,10 @@ function closePopup(popup) {
         form.querySelectorAll(isValid.submitButtonSelector).forEach((submit) => {
             submit.disabled = true;
         });
-
-        form.querySelectorAll('.' + isValid.errorActiveClass).forEach((errorElement) => {
-            errorElement.classList.remove(isValid.errorActiveClass);
-            errorElement.textContent = '';
-        });
-
+        
         form.querySelectorAll('.' + isValid.inputErrorClass).forEach((inputElement) => {
-            inputElement.classList.remove(isValid.inputErrorClass);
-            inputElement.textContent = '';
+            const {_form, _input, _submit, ...rest} = isValid
+            hideInputError(form, inputElement, rest)
         });
     });
     document.removeEventListener('keydown', handleEscClose);
