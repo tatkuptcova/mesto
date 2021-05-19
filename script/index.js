@@ -67,7 +67,7 @@ const validationConfig = {
     errorActiveClass: 'popup__input-error_active',
 };
 
-const popupList= document.querySelectorAll('.popup');
+const popupList = document.querySelectorAll('.popup');
 popupList.forEach((popup) => {
     popup.addEventListener( 'click', (popup) => {
         if (popup.target === popup.currentTarget) {
