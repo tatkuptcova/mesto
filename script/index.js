@@ -59,7 +59,7 @@ function createCard(title, link) {
     return cardElement
 }
 
-const isValid = {
+const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button-submit',
@@ -67,16 +67,14 @@ const isValid = {
     errorActiveClass: 'popup__input-error_active',
 };
 
-const overlayClick = document.querySelectorAll('.popup');
-overlayClick.forEach((event) => {
-    event.addEventListener( 'click', (event) => {
-        if (event.target === event.currentTarget) {
-            event.target.closest('.popup').classList.remove('popup_opened');
+const popupList= document.querySelectorAll('.popup');
+popupList.forEach((popup) => {
+    popup.addEventListener( 'click', (popup) => {
+        if (popup.target === popup.currentTarget) {
+            popup.target.closest('.popup').classList.remove('popup_opened');
         };
     });
 });
-
-
 
 function addCard(cardElement) { 
     elementsList.prepend(cardElement);
@@ -96,7 +94,6 @@ function formSubmitNewCardHandler(evt) {
     closePopup(popupNewCard)
 }
 
-
 function openPopupPic(link, title) {
     // popupImage = document.querySelector('.popup__image');
     popupImage.src = link
@@ -105,7 +102,6 @@ function openPopupPic(link, title) {
     popupCaption.alt = title
     openPopup(popupPic)
 }
-
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -119,7 +115,7 @@ function closePopup(popup) {
 }
 
 function reinitPopupForm(popup) {
-    const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
+    const {formSelector, inputSelector, submitButtonSelector, ...rest} = validationConfig;
     popup.querySelectorAll(formSelector).forEach((form) => {
         form.reset()
         inputElements = Array.from(form.querySelectorAll(inputSelector))
@@ -161,4 +157,4 @@ popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
-enableValidation(isValid);
+enableValidation(validationConfig);

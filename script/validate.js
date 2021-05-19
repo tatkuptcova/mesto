@@ -1,16 +1,16 @@
-const showInputError = (formElement, inputElement, isValid) => {
+const showInputError = (formElement, inputElement, validationConfig) => {
     // show error
-    const {inputErrorClass, errorActiveClass} = isValid;
+    const {inputErrorClass, errorActiveClass} = validationConfig;
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(errorActiveClass);
 }
 
-const hideInputError = (formElement, inputElement, isValid) => {
+const hideInputError = (formElement, inputElement, validationConfig) => {
     // hide error
     // find error element
-    const {inputErrorClass, errorActiveClass} = isValid;
+    const {inputErrorClass, errorActiveClass} = validationConfig;
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(inputErrorClass);
     errorElement.classList.remove(errorActiveClass);
@@ -18,13 +18,13 @@ const hideInputError = (formElement, inputElement, isValid) => {
 }
 
 
-const checkInputValidity = (formElement, inputElement, isValid) => {
+const checkInputValidity = (formElement, inputElement, validationConfig) => {
     //check input is valid
     // if valid, hide error else show error
     if (inputElement.validity.valid) {
-        hideInputError(formElement, inputElement, isValid);
+        hideInputError(formElement, inputElement, validationConfig);
     }else{
-        showInputError(formElement, inputElement, isValid);
+        showInputError(formElement, inputElement, validationConfig);
     }
 }
 
@@ -45,8 +45,8 @@ const toggleButtonState = (buttonElement, inputList) => {
     }
 }
 
-function setEventListeners(formElement, isValid) {
-    const {inputSelector, submitButtonSelector, ...restIsValid} = isValid;
+function setEventListeners(formElement, validationConfig) {
+    const {inputSelector, submitButtonSelector, ...restvalidationConfig} = validationConfig;
     // prevend page reload on form submit
     formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
@@ -63,7 +63,7 @@ function setEventListeners(formElement, isValid) {
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
             // check input is valid
-            checkInputValidity(formElement, inputElement, restIsValid);
+            checkInputValidity(formElement, inputElement, restvalidationConfig);
             toggleButtonState(buttonElement, inputList);
         });
     });
@@ -71,12 +71,12 @@ function setEventListeners(formElement, isValid) {
     toggleButtonState(buttonElement, inputList);
 }
 
-const enableValidation = (isValid) => {
-    const {formSelector, ...restIsValid} = isValid;
+const enableValidation = (validationConfig) => {
+    const {formSelector, ...restvalidationConfig} = validationConfig;
     // find all forms 
     const formList = document.querySelectorAll(formSelector);
     // set event listeners each form
     formList.forEach((formElement) => {
-        setEventListeners(formElement, restIsValid);
+        setEventListeners(formElement, restvalidationConfig);
     })
 };
