@@ -59,7 +59,7 @@ function createCard(title, link) {
     return cardElement
 }
 
-const isValid = {
+const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button-submit',
@@ -119,7 +119,7 @@ function closePopup(popup) {
 }
 
 function reinitPopupForm(popup) {
-    const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
+    const {formSelector, inputSelector, submitButtonSelector, ...rest} = validationConfig;
     popup.querySelectorAll(formSelector).forEach((form) => {
         form.reset()
         inputElements = Array.from(form.querySelectorAll(inputSelector))
@@ -161,4 +161,4 @@ popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
-enableValidation(isValid);
+enableValidation(validationConfig);
