@@ -66,15 +66,17 @@ const isValid = {
     inputErrorClass: 'popup__input_type_error',
     errorActiveClass: 'popup__input-error_active',
 };
- 
+
 const overlayClick = document.querySelectorAll('.popup');
-for (let i = 0; i < overlayClick.length; i++) {
-    overlayClick[i].addEventListener('click', (event) => {
+overlayClick.forEach((event) => {
+    event.addEventListener( 'click', (event) => {
         if (event.target === event.currentTarget) {
-          event.target.closest('.popup').classList.remove('popup_opened');
-        }
+            event.target.closest('.popup').classList.remove('popup_opened');
+        };
     });
-}
+});
+
+
 
 function addCard(cardElement) { 
     elementsList.prepend(cardElement);
@@ -112,6 +114,11 @@ function openPopup(popup) {
 
 function closePopup(popup) { 
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleEscClose);
+    
+}
+
+function reinitPopupForm(popup) {
     const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
     popup.querySelectorAll(formSelector).forEach((form) => {
         form.reset()
@@ -123,8 +130,6 @@ function closePopup(popup) {
             hideInputError(form, inputElement, rest)
         });
     });
-    document.removeEventListener('keydown', handleEscClose);
-    
 }
   
 function handleEscClose(evt) {
@@ -143,8 +148,14 @@ formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 
 
-editButton.addEventListener('click', () => openPopup(popupProfile));
-addButton.addEventListener('click', ()  => openPopup(popupNewCard));
+editButton.addEventListener('click', () => {
+    openPopup(popupProfile);
+    reinitPopupForm(popupProfile);
+});
+addButton.addEventListener('click', ()  => {
+    openPopup(popupNewCard);
+    reinitPopupForm(popupNewCard);
+});
 
 popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
