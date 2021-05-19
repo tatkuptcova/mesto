@@ -66,15 +66,16 @@ const isValid = {
     inputErrorClass: 'popup__input_type_error',
     errorActiveClass: 'popup__input-error_active',
 };
- 
+
 const overlayClick = document.querySelectorAll('.popup');
-for (let i = 0; i < overlayClick.length; i++) {
-    overlayClick[i].addEventListener('click', (event) => {
+overlayClick.forEach((event) => {
+    event.addEventListener( 'click', (event) => {
         if (event.target === event.currentTarget) {
-          event.target.closest('.popup').classList.remove('popup_opened');
-        }
+            event.target.closest('.popup').classList.remove('popup_opened');
+        };
     });
-}
+});
+
 
 function addCard(cardElement) { 
     elementsList.prepend(cardElement);
