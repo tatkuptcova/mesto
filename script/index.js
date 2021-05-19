@@ -69,9 +69,9 @@ const validationConfig = {
 
 const popupList = document.querySelectorAll('.popup');
 popupList.forEach((popup) => {
-    popup.addEventListener( 'click', (popup) => {
-        if (popup.target === popup.currentTarget) {
-            popup.target.closest('.popup').classList.remove('popup_opened');
+    popup.addEventListener( 'click', (event) => {
+        if (event.target === popup) {
+            closePopup(popup);
         };
     });
 });
