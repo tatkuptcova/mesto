@@ -113,17 +113,17 @@ function openPopup(popup) {
 
 function closePopup(popup) { 
     popup.classList.remove('popup_opened');
-    const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
-    popup.querySelectorAll(formSelector).forEach((form) => {
-        form.reset()
-        inputElements = Array.from(form.querySelectorAll(inputSelector))
+    // const {formSelector, inputSelector, submitButtonSelector, ...rest} = isValid
+    // popup.querySelectorAll(formSelector).forEach((form) => {
+    //     form.reset()
+    //     inputElements = Array.from(form.querySelectorAll(inputSelector))
 
-        toggleButtonState(form.querySelector(submitButtonSelector), inputElements)
+    //     toggleButtonState(form.querySelector(submitButtonSelector), inputElements)
         
-        inputElements.forEach((inputElement) => {
-            hideInputError(form, inputElement, rest)
-        });
-    });
+    //     inputElements.forEach((inputElement) => {
+    //         hideInputError(form, inputElement, rest)
+    //     });
+    // });
     document.removeEventListener('keydown', handleEscClose);
     
 }

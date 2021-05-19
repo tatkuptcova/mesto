@@ -50,6 +50,8 @@ function setEventListeners(formElement, isValid) {
     // prevend page reload on form submit
     formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
+        formElement.reset();
+      
     })
 
     // find all inputs
