@@ -1,3 +1,6 @@
+import {initialCards} from './initial-cards.js';
+import {Card} from './Card.js';
+
 const editButton = document.querySelector('.profile__edit-button');
 const popupCloseProfile = document.querySelector('.popup__close_profile');
 const popupProfile = document.querySelector('.popup_profile');
@@ -28,36 +31,47 @@ const popupCloseImage = document.querySelector('.popup__close_image');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
-const elementsList = document.querySelector('.elements__catalogue');
-const elementTemplate = document.querySelector('#cards-template');
+// Карточки, загружаемые по умолчанию
+const elementTemplate = "#cards-template";
+const elementsList = document.querySelector(".elements__catalogue");
 
-function createCard(title, link) {
-    const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
+initialCards.forEach((element) => {
+  const name = element.name;
+  const link = element.link;
+  const temp = new Card(name, link, elementTemplate);
+  elementsList.prepend(temp.element);
+});
 
-    const caption = cardElement.querySelector('.elements__title');
-    caption.textContent = title
+// const elementsList = document.querySelector('.elements__catalogue');
+// const elementTemplate = document.querySelector('#cards-template');
 
-    const img = cardElement.querySelector('.elements__image');
+// function createCard(title, link) {
+//     const cardElement = elementTemplate.content.querySelector('.elements__item').cloneNode(true);
 
-    img.src = link;
-    img.alt = title;
+//     const caption = cardElement.querySelector('.elements__title');
+//     caption.textContent = title
 
-    img.addEventListener('click', () =>  openPopupPic(link, title))
+//     const img = cardElement.querySelector('.elements__image');
 
-    const likeButton = cardElement.querySelector('.elements__button-like');
-    likeButton.addEventListener(
-      'click', () => 
-        likeButton.classList.toggle('elements__button-like_active')
-    );
+//     img.src = link;
+//     img.alt = title;
 
-    const deleteButton = cardElement.querySelector('.elements__button-delete');
-    deleteButton.addEventListener(
-      'click', () =>
-      cardElement.remove()
-    )
+//     img.addEventListener('click', () =>  openPopupPic(link, title))
 
-    return cardElement
-}
+//     const likeButton = cardElement.querySelector('.elements__button-like');
+//     likeButton.addEventListener(
+//       'click', () => 
+//         likeButton.classList.toggle('elements__button-like_active')
+//     );
+
+//     const deleteButton = cardElement.querySelector('.elements__button-delete');
+//     deleteButton.addEventListener(
+//       'click', () =>
+//       cardElement.remove()
+//     )
+
+//     return cardElement
+// }
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -94,14 +108,14 @@ function formSubmitNewCardHandler(evt) {
     closePopup(popupNewCard)
 }
 
-function openPopupPic(link, title) {
-    // popupImage = document.querySelector('.popup__image');
-    popupImage.src = link
-    // popupCaption = document.querySelector('.popup__caption');
-    popupCaption.textContent = title
-    popupCaption.alt = title
-    openPopup(popupPic)
-}
+// function openPopupPic(link, title) {
+//     // popupImage = document.querySelector('.popup__image');
+//     popupImage.src = link
+//     // popupCaption = document.querySelector('.popup__caption');
+//     popupCaption.textContent = title
+//     popupCaption.alt = title
+//     openPopup(popupPic)
+// }
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -134,10 +148,10 @@ function handleEscClose(evt) {
     }
 }
 
-initialCards.forEach((element) => {
-    const cardElement = createCard(element.name, element.link);
-    addCard(cardElement);
-})
+// initialCards.forEach((element) => {
+//     const cardElement = createCard(element.name, element.link);
+//     addCard(cardElement);
+// })
 
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
