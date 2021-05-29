@@ -1,3 +1,11 @@
+import {
+    popupPic,
+    popupCaption,
+    popupImage,
+    formElementNewCard,
+    openPopup,
+} from './Utils.js';
+
 export  class Card {
     constructor(name, link, elementTemplate) {
       this._name = name;
@@ -19,10 +27,11 @@ export  class Card {
       this._element.remove();
       this._element = null;
     }
-    _openpopupNewCard() {
-      openPopup(popupContainer);
-      Img.src = this._link;
-      Caption.textContent = this._title;
+    _openPopupPic() {
+      openPopup(popupPic);
+      popupImage.src = this._link
+      popupCaption.textContent = this._title
+      popupCaption.alt = this._title
     }
     _setEventListeners() {
       this._element
@@ -38,7 +47,7 @@ export  class Card {
       this._element
         .querySelector(".elements__image")
         .addEventListener("click", () => {
-          this._togglePopupNewCard();
+          this._openPopupPic();
         });
     }
   
@@ -48,9 +57,9 @@ export  class Card {
       const img  = cardElement.querySelector(".elements__image");
       this._element = cardElement;
       img.src = this._link;
-      img.alt = this._name;
-      cardElement.querySelector(".elements__title").textContent = this._name;
+      img.alt = this._title;
+      cardElement.querySelector(".elements__title").textContent = this._title;
       this._setEventListeners();
       return cardElement;
     }
-  }
+}
