@@ -6,8 +6,9 @@ import {
 } from './Utils.js';
 
 export default class Card {
-    constructor(name, link, elementTemplate) {
-      this._name = name;
+
+    constructor(title, link, elementTemplate) {
+      this._title = title;
       this._link = link;
       this._elementTemplate = elementTemplate;
       this._element = this._createCard();
@@ -23,10 +24,6 @@ export default class Card {
         .classList.toggle('elements__button-like_active');
     }
 
-    _addCard(cardElement) { 
-        elementsList.prepend(cardElement);
-    }
-
     _toggleDeleteButton() {
       this._element.remove();
       this._element = null;
@@ -34,9 +31,9 @@ export default class Card {
 
     _openPopupPic() {
       openPopup(popupPic);
-      popupImage.src = this._link
-      popupCaption.textContent = this._title
-      popupCaption.alt = this._title
+      popupImage.src = this._link;
+      popupCaption.textContent = this._title;
+      popupCaption.alt = this._title;
     }
     
     _setEventListeners() {
@@ -68,13 +65,4 @@ export default class Card {
       this._setEventListeners();
       return cardElement;
     }
-
-    _formSubmitNewCardHandler(evt) {
-        evt.preventDefault();
-        const cardElement = createCard(titleInput.value,  linkInput.value);
-        addCard(cardElement);
-        closePopup(popupNewCard)
-    }
-    
-    
 }

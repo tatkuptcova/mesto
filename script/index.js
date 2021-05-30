@@ -6,6 +6,7 @@ import {
     popupPic,
     popupCloseImage,
     formElementNewCard,
+    formElementProfile,
     addButton,
     popupCloseAdd,
     popupNewCard,
@@ -15,7 +16,13 @@ import {
     popupCloseProfile,
     popupProfile,
     nameInput,
-    jobInput
+    jobInput,
+    openPopup,
+    closePopup,
+    titleInput,
+    linkInput,
+    nameDisplay,
+    jobDisplay
 } from './Utils.js';
 
 // const editButton = document.querySelector('.profile__edit-button');
@@ -106,9 +113,11 @@ initialCards.forEach((element) => {
 //     });
 // });
 
-// function addCard(cardElement) { 
-//     elementsList.prepend(cardElement);
-// }
+
+
+function addCard(cardElement) { 
+    elementsList.prepend(cardElement);
+}
 
 function formSubmitProfileHandler(evt) {
     evt.preventDefault(); 
@@ -120,12 +129,12 @@ function formSubmitProfileHandler(evt) {
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
-// function formSubmitNewCardHandler(evt) {
-//     evt.preventDefault();
-//     const cardElement = createCard(titleInput.value,  linkInput.value);
-//     addCard(cardElement);
-//     closePopup(popupNewCard)
-// }
+function formSubmitNewCardHandler(evt) {
+    evt.preventDefault();
+    const card = new Card(titleInput.value,  linkInput.value, elementTemplate);
+    addCard(card.element);
+    closePopup(popupNewCard)
+}
 
 // function openPopupPic(link, title) {
 //     // popupImage = document.querySelector('.popup__image');
@@ -151,12 +160,12 @@ function reinitPopupForm(popup) {
     const {formSelector, inputSelector, submitButtonSelector, ...rest} = validationConfig;
     popup.querySelectorAll(formSelector).forEach((form) => {
         form.reset()
-        inputElements = Array.from(form.querySelectorAll(inputSelector))
+        const inputElements = Array.from(form.querySelectorAll(inputSelector))
 
-        toggleButtonState(form.querySelector(submitButtonSelector), inputElements)
+//        toggleButtonState(form.querySelector(submitButtonSelector), inputElements)
         
         inputElements.forEach((inputElement) => {
-            hideInputError(form, inputElement, rest)
+//            hideInputError(form, inputElement, rest)
         });
     });
 }
@@ -186,4 +195,4 @@ popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
-enableValidation(validationConfig);
+//enableValidation(validationConfig);

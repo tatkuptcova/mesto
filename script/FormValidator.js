@@ -1,4 +1,5 @@
 export default class FormValidator{
+    
     constructor(validationConfig, formElement) {
         this._formElement = formElement;
         this._formSelector = validationConfig.formSelector;
@@ -8,7 +9,7 @@ export default class FormValidator{
         this._errorActiveClass = validationConfig.errorActiveClass;
     }
 
-    _showInputError = (formElement, inputElement) => {
+    _showInputError(formElement, inputElement) {
         // show error
         // const {inputErrorClass, errorActiveClass} = validationConfig;
         const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
@@ -17,7 +18,7 @@ export default class FormValidator{
         errorElement.classList.add(this._errorActiveClass);
     }
 
-    _hideInputError = (inputElement) => {
+    _hideInputError(inputElement) {
         // hide error
         // find error element
         // const {inputErrorClass, errorActiveClass} = validationConfig;
@@ -28,7 +29,7 @@ export default class FormValidator{
     }
 
 
-    _checkInputValidity = (formElement, inputElement, validationConfig) => {
+    _checkInputValidity(formElement, inputElement, validationConfig) {
         //check input is valid
         // if valid, hide error else show error
         if (inputElement.validity.valid) {
@@ -38,13 +39,13 @@ export default class FormValidator{
         }
     }
 
-    _hasInvalidInput = (inputList) => {
+    _hasInvalidInput(inputList) {
         return inputList.some((inputElement) => {
             return !inputElement.validity.valid
         })
     }
 
-    _toggleButtonState = (buttonElement, inputList) => {
+    _toggleButtonState(buttonElement, inputList) {
         // if form valid enable button else disable
         if (this._hasInvalidInput(inputList)) {
             // disable
@@ -81,7 +82,21 @@ export default class FormValidator{
         this._toggleButtonState(buttonElement, inputList);
     }
 
-    enableValidation = (validationConfig) => {
+    reinitPopupForm(popup) {
+        const {formSelector, inputSelector, submitButtonSelector, ...rest} = validationConfig;
+        popup.querySelectorAll(formSelector).forEach((form) => {
+            form.reset()
+            const inputElements = Array.from(form.querySelectorAll(inputSelector))
+    
+    //        toggleButtonState(form.querySelector(submitButtonSelector), inputElements)
+            
+            inputElements.forEach((inputElement) => {
+    //            hideInputError(form, inputElement, rest)
+            });
+        });
+    }
+
+    enableValidation(validationConfig) {
         const {formSelector, ...restvalidationConfig} = validationConfig;
         // find all forms 
         const formList = document.querySelectorAll(formSelector);
