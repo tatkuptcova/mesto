@@ -37,23 +37,8 @@ const popupPic = document.querySelector('.popup_pic');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
-
-// Карточки, загружаемые по умолчанию
-initialCards.forEach((element) => {
-  const name = element.name;
-  const link = element.link;
-  const card = new Card(name, link, elementTemplate);
-  addCard(card)
-});
-
 const popupList = document.querySelectorAll('.popup');
-popupList.forEach((popup) => {
-    popup.addEventListener( 'click', (event) => {
-        if (event.target === popup) {
-            closePopup(popup);
-        };
-    });
-});
+
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -80,9 +65,6 @@ function formSubmitProfileHandler(evt) {
     closePopup(popupProfile)
 }
 
-formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
-formElementProfile.addEventListener('submit', formSubmitProfileHandler);
-
 function formSubmitNewCardHandler(evt) {
     evt.preventDefault();
     const card = new Card(titleInput.value,  linkInput.value, elementTemplate);
@@ -90,19 +72,6 @@ function formSubmitNewCardHandler(evt) {
     closePopup(popupNewCard)
 }
 
-
-editButton.addEventListener('click', () => {
-    openPopup(popupProfile);
-    enableValidation(validationConfig, popupProfile)
-});
-addButton.addEventListener('click', ()  => {
-    openPopup(popupNewCard);
-    enableValidation(validationConfig, popupNewCard)
-});
-
-popupCloseImage.addEventListener('click', () => closePopup(popupPic));
-popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
-popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
 function enableValidation(validationConfig, popup) {
     const {formSelector, ...restvalidationConfig} = validationConfig;
@@ -118,3 +87,38 @@ function enableValidation(validationConfig, popup) {
     )
     validator.initForm()
 };
+
+
+// Карточки, загружаемые по умолчанию
+initialCards.forEach((element) => {
+    const name = element.name;
+    const link = element.link;
+    const card = new Card(name, link, elementTemplate);
+    addCard(card)
+});
+  
+  
+popupList.forEach((popup) => {
+    popup.addEventListener( 'click', (event) => {
+        if (event.target === popup) {
+            closePopup(popup);
+        };
+    });
+});
+
+formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
+formElementProfile.addEventListener('submit', formSubmitProfileHandler);
+
+
+editButton.addEventListener('click', () => {
+    openPopup(popupProfile);
+    enableValidation(validationConfig, popupProfile)
+});
+addButton.addEventListener('click', ()  => {
+    openPopup(popupNewCard);
+    enableValidation(validationConfig, popupNewCard)
+});
+
+popupCloseImage.addEventListener('click', () => closePopup(popupPic));
+popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
+popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
