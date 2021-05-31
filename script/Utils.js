@@ -63,10 +63,3 @@ export function handleEscClose(evt) {
     }
 }
 
-export const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-submit',
-    inputErrorClass: 'popup__input_type_error',
-    errorActiveClass: 'popup__input-error_active',
-};

@@ -2,7 +2,7 @@ import {
     popupPic,
     popupCaption,
     popupImage,
-    openPopup,
+    openPopup
 } from './Utils.js';
 
 export default class Card {
