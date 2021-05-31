@@ -1,10 +1,3 @@
-import {
-    popupPic,
-    popupCaption,
-    popupImage,
-    openPopup
-} from './Utils.js';
-
 export default class Card {
 
     constructor(title, link, elementTemplate) {
@@ -18,6 +11,14 @@ export default class Card {
       return this._element;
     }
 
+    get title() {
+      return this._title
+    }
+
+    get link() {
+      return this._link
+    }
+
     _toggleLikeButton() {
       this._element
         .querySelector('.elements__button-like')
@@ -27,13 +28,6 @@ export default class Card {
     _toggleDeleteButton() {
       this._element.remove();
       this._element = null;
-    }
-
-    _openPopupPic() {
-      openPopup(popupPic);
-      popupImage.src = this._link;
-      popupCaption.textContent = this._title;
-      popupCaption.alt = this._title;
     }
     
     _setEventListeners() {
@@ -47,11 +41,6 @@ export default class Card {
         .addEventListener('click', () => {
           this._toggleDeleteButton();
         });
-      this._element
-        .querySelector('.elements__image')
-        .addEventListener('click', () => {
-          this._openPopupPic();
-        });
     }
   
     _createCard() {
@@ -64,5 +53,9 @@ export default class Card {
       cardElement.querySelector('.elements__title').textContent = this._title;
       this._setEventListeners();
       return cardElement;
+    }
+
+    setImageClickListener(listener) {
+      this._element.querySelector('.elements__image').addEventListener('click', listener);
     }
 }

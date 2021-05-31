@@ -2,7 +2,6 @@ import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {
-    popupPic,
     openPopup,
     closePopup,
 } from './Utils.js';
@@ -34,12 +33,17 @@ const nameDisplay = document.querySelector('#profileName');
 const jobDisplay = document.querySelector('#profileAbout');
 
 
+const popupPic = document.querySelector('.popup_pic');
+const popupImage = document.querySelector('.popup__image');
+const popupCaption = document.querySelector('.popup__caption');
+
+
 // Карточки, загружаемые по умолчанию
 initialCards.forEach((element) => {
   const name = element.name;
   const link = element.link;
-  const temp = new Card(name, link, elementTemplate);
-  elementsList.prepend(temp.element);
+  const card = new Card(name, link, elementTemplate);
+  addCard(card)
 });
 
 const popupList = document.querySelectorAll('.popup');
@@ -59,8 +63,14 @@ const validationConfig = {
     errorActiveClass: 'popup__input-error_active',
 };
 
-function addCard(cardElement) { 
-    elementsList.prepend(cardElement);
+function addCard(card) { 
+    elementsList.prepend(card.element);
+    card.setImageClickListener(() => {
+        openPopup(popupPic);
+        popupImage.src = card.link;
+        popupCaption.textContent = card.title;
+        popupCaption.alt = card.title;
+    })
 }
 
 function formSubmitProfileHandler(evt) {
@@ -76,7 +86,7 @@ formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 function formSubmitNewCardHandler(evt) {
     evt.preventDefault();
     const card = new Card(titleInput.value,  linkInput.value, elementTemplate);
-    addCard(card.element);
+    addCard(card);
     closePopup(popupNewCard)
 }
 
