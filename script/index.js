@@ -4,7 +4,7 @@ import FormValidator from './FormValidator.js';
 import {
     openPopup,
     closePopup,
-} from './Utils.js';
+} from './utils.js';
 
 
 const popupCloseImage = document.querySelector('.popup__close_image');
