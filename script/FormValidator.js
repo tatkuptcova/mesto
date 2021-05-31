@@ -29,7 +29,7 @@ export default class FormValidator{
         // if valid, hide error else show error
         if (inputElement.validity.valid) {
             this._hideInputError(inputElement);
-        }else{
+        } else {
             this._showInputError(inputElement);
         }
     }
@@ -44,7 +44,7 @@ export default class FormValidator{
         // if form valid enable button else disable
         if (this._hasInvalidInput(inputList)) {
             buttonElement.disabled = true;
-        }else{
+        } else {
             buttonElement.disabled = false;
         }
     }
