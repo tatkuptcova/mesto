@@ -3,26 +3,35 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import {
     popupPic,
-    popupCloseImage,
-    formElementNewCard,
-    formElementProfile,
-    addButton,
-    popupCloseAdd,
-    popupNewCard,
-    elementTemplate,
-    elementsList,
-    editButton,
-    popupCloseProfile,
-    popupProfile,
-    nameInput,
-    jobInput,
     openPopup,
     closePopup,
-    titleInput,
-    linkInput,
-    nameDisplay,
-    jobDisplay
 } from './Utils.js';
+
+
+const popupCloseImage = document.querySelector('.popup__close_image');
+const formElementNewCard = document.querySelector('.popup__form_add');
+const addButton = document.querySelector('.profile__button-add');
+
+const popupCloseAdd = document.querySelector('.popup__close_add');
+const popupNewCard = document.querySelector('.popup_card');
+
+const titleInput = document.querySelector('.popup__input_add-title');
+const linkInput = document.querySelector('.popup__input_add-link');
+
+const elementTemplate = "#cards-template";
+const elementsList = document.querySelector(".elements__catalogue");
+
+const editButton = document.querySelector('.profile__edit-button');
+const popupCloseProfile = document.querySelector('.popup__close_profile');
+const popupProfile = document.querySelector('.popup_profile');
+
+const formElementProfile = document.querySelector('.popup__form_profile');
+
+const nameInput = document.querySelector('.popup__input_edit-name');
+const jobInput = document.querySelector('.popup__input_edit-about');
+
+const nameDisplay = document.querySelector('#profileName');
+const jobDisplay = document.querySelector('#profileAbout');
 
 
 // Карточки, загружаемые по умолчанию
@@ -31,6 +40,15 @@ initialCards.forEach((element) => {
   const link = element.link;
   const temp = new Card(name, link, elementTemplate);
   elementsList.prepend(temp.element);
+});
+
+const popupList = document.querySelectorAll('.popup');
+popupList.forEach((popup) => {
+    popup.addEventListener( 'click', (event) => {
+        if (event.target === popup) {
+            closePopup(popup);
+        };
+    });
 });
 
 const validationConfig = {
@@ -78,7 +96,7 @@ popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
 
 function enableValidation(validationConfig, popup) {
     const {formSelector, ...restvalidationConfig} = validationConfig;
-    
+
     // find all forms 
     const formElement = popup.querySelector(formSelector);
     const validator = new FormValidator(
