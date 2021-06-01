@@ -1,9 +1,10 @@
 export default class Card {
 
-    constructor(title, link, elementTemplate) {
+    constructor(title, link, elementTemplate, imageClickListener) {
       this._title = title;
       this._link = link;
       this._elementTemplate = elementTemplate;
+      this._imageClickListener = imageClickListener;
       this._element = this._createCard();
     }
   
@@ -41,8 +42,14 @@ export default class Card {
         .addEventListener('click', () => {
           this._toggleDeleteButton();
         });
+      this._element
+        .querySelector('.elements__image')
+        .addEventListener('click', () => {
+          this._imageClickListener();
+        });
     }
   
+
     _createCard() {
       const elementTemplate = document.querySelector(this._elementTemplate).content;
       const cardElement = elementTemplate.querySelector('.elements__item').cloneNode(true);
@@ -53,9 +60,5 @@ export default class Card {
       cardElement.querySelector('.elements__title').textContent = this._title;
       this._setEventListeners();
       return cardElement;
-    }
-
-    setImageClickListener(listener) {
-      this._element.querySelector('.elements__image').addEventListener('click', listener);
     }
 }
