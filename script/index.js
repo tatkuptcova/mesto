@@ -48,11 +48,8 @@ const validationConfig = {
     errorActiveClass: 'popup__input-error_active',
 };
 
-const addCardFormValidator = new FormValidator(popupNewCard, validationConfig);
-const editProfileFormValidator = new FormValidator(popupProfile, validationConfig);
-
-addCardFormValidator.enableValidation();
-editProfileFormValidator.enableValidation();
+const addCardFormValidator = createValidator(validationConfig, popupNewCard);
+const editProfileFormValidator = createValidator(validationConfig, popupProfile);
 
 function addCard(title, link) {
     const card = new Card(title, link, elementTemplate, () => {
@@ -78,20 +75,14 @@ function formSubmitNewCardHandler(evt) {
 }
 
 
-// function enableValidation(validationConfig, popup) {
-//     const {formSelector, ...restvalidationConfig} = validationConfig;
+function createValidator(validationConfig, popup) {
+    const {formSelector, ...restvalidationConfig} = validationConfig;
 
-//     // find all forms 
-//     const formElement = popup.querySelector(formSelector);
-//     const validator = new FormValidator(
-//         formElement,
-//         restvalidationConfig.inputSelector,
-//         restvalidationConfig.submitButtonSelector,
-//         restvalidationConfig.inputErrorClass,
-//         restvalidationConfig.errorActiveClass,
-//     )
-//     validator.initForm()
-// };
+    const formElement = popup.querySelector(formSelector);
+    const validator = new FormValidator(restvalidationConfig, formElement)
+    validator.enableValidation()
+    return validator
+};
 
 
 // Карточки, загружаемые по умолчанию
@@ -114,14 +105,13 @@ formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
 editButton.addEventListener('click', () => {
     openPopup(popupProfile);
-    // enableValidation(validationConfig, popupProfile)
+    editProfileFormValidator.initForm()
 });
 addButton.addEventListener('click', ()  => {
     openPopup(popupNewCard);
-    // enableValidation(validationConfig, popupNewCard)
+    addCardFormValidator.initForm()
 });
 
 popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
-
