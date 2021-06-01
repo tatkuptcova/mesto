@@ -1,12 +1,11 @@
 export default class FormValidator{
     
-    constructor(formElement, inputSelector, submitButtonSelector, inputErrorClass, errorActiveClass) {
+    constructor(formElement, validationConfig) {
         this._formElement = formElement;
-        this._inputSelector = inputSelector;
-        this._submitButtonSelector = submitButtonSelector;
-        this._inputErrorClass = inputErrorClass;
-        this._errorActiveClass = errorActiveClass;
-        this._setEventListeners()
+        this._inputSelector = validationConfig.inputSelector;
+        this._submitButtonSelector = validationConfig.submitButtonSelector;
+        this._inputErrorClass = validationConfig.inputErrorClass;
+        this._errorActiveClass = validationConfig.errorActiveClass;
     }
 
     _showInputError(inputElement) {
@@ -50,15 +49,9 @@ export default class FormValidator{
     }
 
     _setEventListeners() {
-        // prevend page reload on form submit
-        this._formElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            this._formElement.reset();
-        })
-
         const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         const buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-
+        
         // add listeners for each input
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
@@ -70,6 +63,15 @@ export default class FormValidator{
         // set initial button state
         this._toggleButtonState(buttonElement, inputList);
     }
+
+    enableValidation() {
+        this._formElement.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+            this._formElement.reset();
+        });
+        this._setEventListeners();
+    };
+    
 
     initForm() {
         const form = this._formElement
