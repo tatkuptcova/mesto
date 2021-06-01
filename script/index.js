@@ -48,14 +48,14 @@ const validationConfig = {
     errorActiveClass: 'popup__input-error_active',
 };
 
-function addCard(card) { 
-    elementsList.prepend(card.element);
-    card.setImageClickListener(() => {
+function addCard(title, link) {
+    const card = new Card(title, link, elementTemplate, () => {
         openPopup(popupPic);
-        popupImage.src = card.link;
-        popupCaption.textContent = card.title;
-        popupCaption.alt = card.title;
-    })
+        popupImage.src = link;
+        popupCaption.textContent = title;
+        popupCaption.alt = title;
+    });
+    elementsList.prepend(card.element);
 }
 
 function formSubmitProfileHandler(evt) {
@@ -67,8 +67,7 @@ function formSubmitProfileHandler(evt) {
 
 function formSubmitNewCardHandler(evt) {
     evt.preventDefault();
-    const card = new Card(titleInput.value,  linkInput.value, elementTemplate);
-    addCard(card);
+    addCard(titleInput.value,  linkInput.value);
     closePopup(popupNewCard)
 }
 
@@ -91,10 +90,7 @@ function enableValidation(validationConfig, popup) {
 
 // Карточки, загружаемые по умолчанию
 initialCards.forEach((element) => {
-    const name = element.name;
-    const link = element.link;
-    const card = new Card(name, link, elementTemplate);
-    addCard(card)
+    addCard(element.name, element.link)
 });
   
   
