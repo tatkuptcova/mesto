@@ -13,11 +13,11 @@ export default class Card {
     }
 
     get title() {
-      return this._title
+      return this._title;
     }
 
     get link() {
-      return this._link
+      return this._link;
     }
 
     _toggleLikeButton() {
@@ -49,7 +49,6 @@ export default class Card {
         });
     }
   
-
     _createCard() {
       const elementTemplate = document.querySelector(this._elementTemplate).content;
       const cardElement = elementTemplate.querySelector('.elements__item').cloneNode(true);
@@ -59,6 +58,6 @@ export default class Card {
       img.alt = this._title;
       cardElement.querySelector('.elements__title').textContent = this._title;
       this._setEventListeners();
-      return cardElement;
+      return cardElement
     }
 }
