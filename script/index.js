@@ -49,13 +49,12 @@ const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
 
 function createCard(title, link) {
-    const card = new Card(title, link, elementTemplate, () => {
+    return new Card(title, link, elementTemplate, () => {
         openPopup(popupPic);
         popupImage.src = link;
         popupCaption.textContent = title;
         popupCaption.alt = title;
     });
-    return card;
 }
 
 function addCard(card) {
@@ -78,7 +77,6 @@ function formSubmitNewCardHandler(evt) {
 
 function createValidator(validationConfig, popup) {
     const {formSelector, ...restvalidationConfig} = validationConfig;
-
     const formElement = popup.querySelector(formSelector);
     const validator = new FormValidator(restvalidationConfig, formElement)
     validator.enableValidation()
