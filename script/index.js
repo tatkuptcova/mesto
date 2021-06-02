@@ -6,7 +6,6 @@ import {
     closePopup,
 } from './utils.js';
 
-
 const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
 const addButton = document.querySelector('.profile__button-add');
@@ -32,13 +31,11 @@ const jobInput = document.querySelector('.popup__input_edit-about');
 const nameDisplay = document.querySelector('#profileName');
 const jobDisplay = document.querySelector('#profileAbout');
 
-
 const popupPic = document.querySelector('.popup_pic');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
 const popupList = document.querySelectorAll('.popup');
-
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -51,7 +48,7 @@ const validationConfig = {
 const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
 
-function addCard(title, link) {
+function createCard(title, link) {
     const card = new Card(title, link, elementTemplate, () => {
         openPopup(popupPic);
         popupImage.src = link;
@@ -70,10 +67,9 @@ function formSubmitProfileHandler(evt) {
 
 function formSubmitNewCardHandler(evt) {
     evt.preventDefault();
-    addCard(titleInput.value,  linkInput.value);
+    createCard(titleInput.value, linkInput.value);
     closePopup(popupNewCard)
 }
-
 
 function createValidator(validationConfig, popup) {
     const {formSelector, ...restvalidationConfig} = validationConfig;
@@ -84,12 +80,10 @@ function createValidator(validationConfig, popup) {
     return validator
 };
 
-
 // Карточки, загружаемые по умолчанию
 initialCards.forEach((element) => {
-    addCard(element.name, element.link)
+    createCard(element.name, element.link)
 });
-  
   
 popupList.forEach((popup) => {
     popup.addEventListener( 'click', (event) => {
@@ -101,7 +95,6 @@ popupList.forEach((popup) => {
 
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
-
 
 editButton.addEventListener('click', () => {
     openPopup(popupProfile);
