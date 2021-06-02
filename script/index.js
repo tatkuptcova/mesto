@@ -55,7 +55,11 @@ function createCard(title, link) {
         popupCaption.textContent = title;
         popupCaption.alt = title;
     });
-    elementsList.prepend(card.element);
+    return card;
+}
+
+function addCard(card) {
+    elementsList.prepend(card.element); 
 }
 
 function formSubmitProfileHandler(evt) {
@@ -67,7 +71,8 @@ function formSubmitProfileHandler(evt) {
 
 function formSubmitNewCardHandler(evt) {
     evt.preventDefault();
-    createCard(titleInput.value, linkInput.value);
+    const card = createCard(titleInput.value, linkInput.value);
+    addCard(card)
     closePopup(popupNewCard)
 }
 
@@ -82,7 +87,8 @@ function createValidator(validationConfig, popup) {
 
 // Карточки, загружаемые по умолчанию
 initialCards.forEach((element) => {
-    createCard(element.name, element.link)
+    const card = createCard(element.name, element.link)
+    addCard(card)
 });
   
 popupList.forEach((popup) => {
