@@ -1,10 +1,10 @@
-import {initialCards} from '../script/initial-cards.js';
-import Card from '../script/components/Card.js';
-import FormValidator from '../script/components/FormValidator.js';
+import {initialCards} from '../Utils/initial-cards.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 import {
     openPopup,
     closePopup,
-} from '../script/Utils/utils.js';
+} from '../Utils/utils.js';
 
 const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
