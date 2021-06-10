@@ -5,6 +5,7 @@ import {
     openPopup,
     closePopup,
 } from '../utils/utils.js';
+import Section from '../components/Section.js';
 
 const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
@@ -47,6 +48,15 @@ const validationConfig = {
 
 const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
+
+const cardList = new Section({
+    renderer: (item) => {
+        elementsList.append(createCard(item));
+    }
+  },
+  elementsList
+)
+
 
 function createCard(title, link) {
     return new Card(title, link, elementTemplate, () => {
