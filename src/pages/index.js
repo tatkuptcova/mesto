@@ -1,11 +1,12 @@
 import {initialCards} from '../utils/initial-cards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
 import {
     openPopup,
     closePopup,
 } from '../utils/utils.js';
-import Section from '../components/Section.js';
+
 
 const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
@@ -50,12 +51,14 @@ const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
 
 const cardList = new Section({
+    items: initialCards,
     renderer: (item) => {
         elementsList.append(createCard(item));
     }
   },
   elementsList
-)
+);
+cardList.addItem(createCard);
 
 
 function createCard(title, link) {
