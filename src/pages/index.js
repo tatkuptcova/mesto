@@ -6,7 +6,8 @@ import {
     openPopup,
     closePopup,
 } from '../utils/utils.js';
-import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 
 
 const popupCloseImage = document.querySelector('.popup__close_image');
@@ -66,6 +67,15 @@ cardList.addItem(createCard);
 //попап с картинкой
 const popupWithImage = new PopupWithImage('.popup_pic');
 popupWithImage.setEventListeners();
+
+//Окно с новой карточкой
+const popupWithFormNewCard = new PopupWithForm('.popup_card');
+popupWithFormNewCard.setEventListeners();
+
+// Окно редактирования профиля пользователя
+const PopupWithFormProfile = new PopupWithForm('.popup_profile');
+PopupWithFormProfile.setEventListeners();
+
 
 // Создает класс под каждую карточку
 function createCard(title, link) {
