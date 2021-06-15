@@ -9,7 +9,7 @@ export function closePopup(popup) {
     document.removeEventListener('keydown', handleEscClose);
 }
 
-// / Переменные для редактирования всплывающего окна
+// Переменные для редактирования всплывающего окна
 function handleEscClose(evt) {
     if (evt.key === 'Escape') {
        closePopup(document.querySelector('.popup_opened'));

@@ -6,6 +6,7 @@ import {
     openPopup,
     closePopup,
 } from '../utils/utils.js';
+import PopupWithImage from '../components/PopupWithImage.js'
 
 
 const popupCloseImage = document.querySelector('.popup__close_image');
@@ -39,6 +40,7 @@ const popupCaption = document.querySelector('.popup__caption');
 
 const popupList = document.querySelectorAll('.popup');
 
+//объект настроек для валидации с классами и селекторами
 const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -50,6 +52,7 @@ const validationConfig = {
 const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
 
+//отвечает за отображение карточек
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
@@ -60,7 +63,11 @@ const cardList = new Section({
 );
 cardList.addItem(createCard);
 
+//попап с картинкой
+const popupWithImage = new PopupWithImage('.popup_pic');
+popupWithImage.setEventListeners();
 
+// Создает класс под каждую карточку
 function createCard(title, link) {
     return new Card(title, link, elementTemplate, () => {
         openPopup(popupPic);
@@ -102,13 +109,14 @@ initialCards.forEach((element) => {
     addCard(card)
 });
   
-popupList.forEach((popup) => {
-    popup.addEventListener( 'click', (event) => {
-        if (event.target === popup) {
-            closePopup(popup);
-        };
-    });
-});
+// Закрытие popup по Overlay
+// popupList.forEach((popup) => {
+//     popup.addEventListener( 'click', (event) => {
+//         if (event.target === popup) {
+//             closePopup(popup);
+//         };
+//     });
+// });
 
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
@@ -122,6 +130,7 @@ addButton.addEventListener('click', ()  => {
     addCardFormValidator.initForm()
 });
 
+/*------------------обработчики событий----------------------------------*/
 popupCloseImage.addEventListener('click', () => closePopup(popupPic));
 popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
 popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
