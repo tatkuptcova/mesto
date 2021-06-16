@@ -17,10 +17,16 @@ export default class Popup {
     // / Переменные для редактирования всплывающего окна
     _handleEscClose(evt) {
         if (evt.key === 'Escape') {
-        this.close();
+            this.close();
         }
     }
 
+    _handleOverlayClose(evt) {
+        if (evt.target === popup) {
+            this.close();
+        }
+    }
+    
     setEventListeners(){
         document.querySelector(this._popupSelector).addEventListener('click', (evt) => {
             if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {

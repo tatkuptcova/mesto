@@ -8,7 +8,7 @@ import {
 } from '../utils/utils.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-
+import UserInfo from '../components/UserInfo.js';
 
 const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
@@ -76,6 +76,10 @@ popupWithFormNewCard.setEventListeners();
 const PopupWithFormProfile = new PopupWithForm('.popup_profile');
 PopupWithFormProfile.setEventListeners();
 
+const userInfo = new UserInfo ({
+    profileNameSelector: '.profile__name', 
+    profileJobSelector: '.profile__about'
+});
 
 // Создает класс под каждую карточку
 function createCard(title, link) {
@@ -133,6 +137,9 @@ formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
 editButton.addEventListener('click', () => {
     openPopup(popupProfile);
+    const {name, job} =  userInfo.getUserInfo();
+    nameInput.value = name.textContent;
+    jobInput.value = job.textContent;
     editProfileFormValidator.initForm()
 });
 addButton.addEventListener('click', ()  => {
