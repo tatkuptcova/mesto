@@ -2,10 +2,10 @@ import {initialCards} from '../utils/initial-cards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import {
-    openPopup,
-    closePopup,
-} from '../utils/utils.js';
+// import {
+//     openPopup,
+//     closePopup,
+// } from '../utils/utils.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -39,7 +39,7 @@ const popupPic = document.querySelector('.popup_pic');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
-const popupList = document.querySelectorAll('.popup');
+// const popupList = document.querySelectorAll('.popup');
 
 //объект настроек для валидации с классами и селекторами
 const validationConfig = {
@@ -84,7 +84,7 @@ const userInfo = new UserInfo ({
 // Создает класс под каждую карточку
 function createCard(title, link) {
     return new Card(title, link, elementTemplate, () => {
-        openPopup(popupPic);
+        popupWithImage.open();
         popupImage.src = link;
         popupCaption.textContent = title;
         popupCaption.alt = title;
@@ -99,14 +99,14 @@ function formSubmitProfileHandler(evt) {
     evt.preventDefault(); 
     nameDisplay.textContent = nameInput.value
     jobDisplay.textContent = jobInput.value
-    closePopup(popupProfile)
+    PopupWithFormProfile.close()
 }
 
 function formSubmitNewCardHandler(evt) {
     evt.preventDefault();
     const card = createCard(titleInput.value, linkInput.value);
     addCard(card)
-    closePopup(popupNewCard)
+    popupWithFormNewCard.close()
 }
 
 function createValidator(validationConfig, popup) {
@@ -136,18 +136,18 @@ formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
 editButton.addEventListener('click', () => {
-    openPopup(popupProfile);
+    PopupWithFormProfile.open();
     const {name, job} =  userInfo.getUserInfo();
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
     editProfileFormValidator.initForm()
 });
 addButton.addEventListener('click', ()  => {
-    openPopup(popupNewCard);
+    popupWithFormNewCard.open();
     addCardFormValidator.initForm()
 });
 
 /*------------------обработчики событий----------------------------------*/
-popupCloseImage.addEventListener('click', () => closePopup(popupPic));
-popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
-popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
+// popupWithFormNewCard.addEventListener('click', () => close());
+// popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
+// popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
