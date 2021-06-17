@@ -10,11 +10,11 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-const popupCloseImage = document.querySelector('.popup__close_image');
+// const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
 const addButton = document.querySelector('.profile__button-add');
 
-const popupCloseAdd = document.querySelector('.popup__close_add');
+// const popupCloseAdd = document.querySelector('.popup__close_add');
 const popupNewCard = document.querySelector('.popup_card');
 
 const titleInput = document.querySelector('.popup__input_add-title');
@@ -24,7 +24,7 @@ const elementTemplate = "#cards-template";
 const elementsList = document.querySelector(".elements__catalogue");
 
 const editButton = document.querySelector('.profile__edit-button');
-const popupCloseProfile = document.querySelector('.popup__close_profile');
+// const popupCloseProfile = document.querySelector('.popup__close_profile');
 const popupProfile = document.querySelector('.popup_profile');
 
 const formElementProfile = document.querySelector('.popup__form_profile');
