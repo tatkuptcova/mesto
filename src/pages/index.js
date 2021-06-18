@@ -2,19 +2,13 @@ import {initialCards} from '../utils/initial-cards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-// import {
-//     openPopup,
-//     closePopup,
-// } from '../utils/utils.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-// const popupCloseImage = document.querySelector('.popup__close_image');
 const formElementNewCard = document.querySelector('.popup__form_add');
 const addButton = document.querySelector('.profile__button-add');
 
-// const popupCloseAdd = document.querySelector('.popup__close_add');
 const popupNewCard = document.querySelector('.popup_card');
 
 const titleInput = document.querySelector('.popup__input_add-title');
@@ -24,7 +18,6 @@ const elementTemplate = "#cards-template";
 const elementsList = document.querySelector(".elements__catalogue");
 
 const editButton = document.querySelector('.profile__edit-button');
-// const popupCloseProfile = document.querySelector('.popup__close_profile');
 const popupProfile = document.querySelector('.popup_profile');
 
 const formElementProfile = document.querySelector('.popup__form_profile');
@@ -38,8 +31,6 @@ const jobDisplay = document.querySelector('#profileAbout');
 const popupPic = document.querySelector('.popup_pic');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
-
-// const popupList = document.querySelectorAll('.popup');
 
 //объект настроек для валидации с классами и селекторами
 const validationConfig = {
@@ -122,15 +113,6 @@ initialCards.forEach((element) => {
     const card = createCard(element.name, element.link)
     addCard(card)
 });
-  
-// Закрытие popup по Overlay
-// popupList.forEach((popup) => {
-//     popup.addEventListener( 'click', (event) => {
-//         if (event.target === popup) {
-//             closePopup(popup);
-//         };
-//     });
-// });
 
 formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
 formElementProfile.addEventListener('submit', formSubmitProfileHandler);
@@ -146,8 +128,3 @@ addButton.addEventListener('click', ()  => {
     popupWithFormNewCard.open();
     addCardFormValidator.initForm()
 });
-
-/*------------------обработчики событий----------------------------------*/
-// popupWithFormNewCard.addEventListener('click', () => close());
-// popupCloseAdd.addEventListener('click', () => closePopup(popupNewCard));
-// popupCloseProfile.addEventListener('click', () => closePopup(popupProfile));
