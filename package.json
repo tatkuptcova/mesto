@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "12.04.2021-25.04.2021     26.04.2021-09.05.2021      10.05.2021-23.05.2021     24.05.2021-06.06.2021",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tatkuptcova/mesto.git"
+  },
+  "author": "Tatiana KUPTSOVA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tatkuptcova/mesto/issues"
+  },
+  "homepage": "https://github.com/tatkuptcova/mesto#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.5",
+    "autoprefixer": "^10.2.6",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.14.0",
+    "cssnano": "^5.0.6",
+    "postcss-loader": "^6.1.0",
+    "webpack": "^5.39.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

@@ -7,20 +7,20 @@
   <meta name="Description" content="Автор: Татьяна Купцова, 
   Проектная работа: Место, Сайт: создан в рамках учебы в Яндекс Практикум, 
   Курс: Веб-разработка">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Место</title>
 </head>
 
 <body class="page">
 
     <header class="header">
-        <img src="./images/logo.svg" alt="Лого" class="header__logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="Лого" class="header__logo">
     </header>
 
     <main class="container">
       <div class="content">
         <section class="profile">
-            <img class="profile__image" src="./images/avatar.jpg" alt="Профиль фото">
+            <img class="profile__image" src="<%=require('./images/avatar.jpg')%>" alt="Профиль фото">
             <div class="profile__info">
               <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
               <button type="button" aria-label="Редактировать" class="button profile__edit-button"></button>
@@ -35,7 +35,6 @@
             <ul class="elements__catalogue"> 
             </ul>
         </section>
-
       </div>
     </main>
 
@@ -130,8 +129,7 @@
           </div>
       </li>
     </template>
-
-    <script type="module" src="./pages/index.js"></script>  
+ 
     
   
 </body>

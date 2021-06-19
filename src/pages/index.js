@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import {initialCards} from '../utils/initial-cards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -28,7 +30,6 @@ const jobInput = document.querySelector('.popup__input_edit-about');
 const nameDisplay = document.querySelector('#profileName');
 const jobDisplay = document.querySelector('#profileAbout');
 
-const popupPic = document.querySelector('.popup_pic');
 const popupImage = document.querySelector('.popup__image');
 const popupCaption = document.querySelector('.popup__caption');
 
@@ -53,7 +54,7 @@ const cardList = new Section({
   },
   elementsList
 );
-cardList.addItem(createCard);
+cardList.addItem();
 
 //попап с картинкой
 const popupWithImage = new PopupWithImage('.popup_pic');
