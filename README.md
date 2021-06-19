@@ -32,6 +32,18 @@
  
 Установлен Webpack, Babel, настроена обработка CSS, HTML, изображений и шрифтов.
 
+**Инструкция по установке:**
+
+git clone https://tatkuptcova.github.io/mesto/
+
+cd mesto
+
+npm i webpack --save-dev
+
+npm run build
+
+npm run dev
+
 **В этой проектной работе были использованы следующие технологии:**
 * Flexbox 
 * Grid Layout 
