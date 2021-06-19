@@ -7,31 +7,24 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-
-const formElementNewCard = document.querySelector('.popup__form_add');
-const addButton = document.querySelector('.profile__button-add');
-
-const popupNewCard = document.querySelector('.popup_card');
-
-const titleInput = document.querySelector('.popup__input_add-title');
-const linkInput = document.querySelector('.popup__input_add-link');
-
-const elementTemplate = "#cards-template";
-const elementsList = document.querySelector(".elements__catalogue");
-
-const editButton = document.querySelector('.profile__edit-button');
-const popupProfile = document.querySelector('.popup_profile');
-
-const formElementProfile = document.querySelector('.popup__form_profile');
-
-const nameInput = document.querySelector('.popup__input_edit-name');
-const jobInput = document.querySelector('.popup__input_edit-about');
-
-const nameDisplay = document.querySelector('#profileName');
-const jobDisplay = document.querySelector('#profileAbout');
-
-const popupImage = document.querySelector('.popup__image');
-const popupCaption = document.querySelector('.popup__caption');
+import {
+    formElementNewCard,
+    addButton,
+    popupNewCard,
+    titleInput,
+    linkInput,
+    elementTemplate,
+    elementsList,
+    editButton,
+    popupProfile,
+    formElementProfile,
+    nameInput,
+    jobInput,
+    nameDisplay,
+    jobDisplay,
+    popupImage,
+    popupCaption
+} from '../utils/constants.js'
 
 //объект настроек для валидации с классами и селекторами
 const validationConfig = {
