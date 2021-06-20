@@ -42,7 +42,7 @@ const editProfileFormValidator = createValidator(validationConfig, popupProfile)
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        elementsList.append(createCard(item));
+        cardList.append(createCard(item));
     }
   },
   elementsList
@@ -69,10 +69,7 @@ const userInfo = new UserInfo ({
 // Создает класс под каждую карточку
 function createCard(title, link) {
     return new Card(title, link, elementTemplate, () => {
-        popupWithImage.open();
-        popupImage.src = link;
-        popupCaption.textContent = title;
-        popupCaption.alt = title;
+        popupWithImage.open(title,link);
     });
 }
 
