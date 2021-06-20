@@ -12,7 +12,6 @@ export default class Popup {
     close() { 
         document.querySelector(this._popupSelector).classList.remove('popup_opened');
         document.removeEventListener('keydown', this._handleEscClose.bind(this));
-        document.removeEventListener('mousedown', this._handleOverlayClose.bind(this));
     }
 
     // / Переменные для редактирования всплывающего окна
