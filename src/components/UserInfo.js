@@ -12,9 +12,7 @@ export default class UserInfo {
     }
   
     setUserInfo(newName, newJob) {
-      const data = this.getUserInfo();
-      const {name, job} = data;
-      name.textContent = newName;
-      job.textContent = newJob;
+      this.name.textContent = newName;
+      this.job.textContent = newJob;
     }
   }

@@ -8,22 +8,14 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import {
-    formElementNewCard,
     addButton,
     popupNewCard,
-    titleInput,
-    linkInput,
     elementTemplate,
     elementsList,
     editButton,
     popupProfile,
-    formElementProfile,
     nameInput,
     jobInput,
-    nameDisplay,
-    jobDisplay,
-    popupImage,
-    popupCaption
 } from '../utils/constants.js'
 
 //объект настроек для валидации с классами и селекторами
@@ -47,18 +39,22 @@ const cardList = new Section({
   },
   elementsList
 );
-cardList.addItem();
 
 //попап с картинкой
 const popupWithImage = new PopupWithImage('.popup_pic');
 popupWithImage.setEventListeners();
 
 //Окно с новой карточкой
-const popupWithFormNewCard = new PopupWithForm('.popup_card');
+const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
+    const card = createCard(inputVals['nameplace-input'], inputVals['link-input']);
+    cardList.addItem(card.element);
+});
 popupWithFormNewCard.setEventListeners();
 
 // Окно редактирования профиля пользователя
-const PopupWithFormProfile = new PopupWithForm('.popup_profile');
+const PopupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
+    userInfo.setUserInfo(inputVals['name-input'], inputVals['about-input'])
+});
 PopupWithFormProfile.setEventListeners();
 
 const userInfo = new UserInfo ({
@@ -73,24 +69,6 @@ function createCard(title, link) {
     });
 }
 
-function addCard(card) {
-    elementsList.prepend(card.element); 
-}
-
-function formSubmitProfileHandler(evt) {
-    evt.preventDefault(); 
-    nameDisplay.textContent = nameInput.value
-    jobDisplay.textContent = jobInput.value
-    PopupWithFormProfile.close()
-}
-
-function formSubmitNewCardHandler(evt) {
-    evt.preventDefault();
-    const card = createCard(titleInput.value, linkInput.value);
-    addCard(card)
-    popupWithFormNewCard.close()
-}
-
 function createValidator(validationConfig, popup) {
     const {formSelector, ...restvalidationConfig} = validationConfig;
     const formElement = popup.querySelector(formSelector);
@@ -102,11 +80,8 @@ function createValidator(validationConfig, popup) {
 // Карточки, загружаемые по умолчанию
 initialCards.forEach((element) => {
     const card = createCard(element.name, element.link)
-    addCard(card)
+    cardList.addItem(card.element)
 });
-
-formElementNewCard.addEventListener('submit', formSubmitNewCardHandler);
-formElementProfile.addEventListener('submit', formSubmitProfileHandler);
 
 editButton.addEventListener('click', () => {
     PopupWithFormProfile.open();
