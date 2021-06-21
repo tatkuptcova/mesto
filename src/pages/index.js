@@ -52,10 +52,10 @@ const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
 popupWithFormNewCard.setEventListeners();
 
 // Окно редактирования профиля пользователя
-const PopupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
+const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
     userInfo.setUserInfo(inputVals['name-input'], inputVals['about-input'])
 });
-PopupWithFormProfile.setEventListeners();
+popupWithFormProfile.setEventListeners();
 
 const userInfo = new UserInfo ({
     profileNameSelector: '.profile__name', 
