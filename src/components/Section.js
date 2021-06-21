@@ -11,10 +11,6 @@ export default class Section {
         });
     }
 
-    clear() {
-        this._elementsList.innerHTML = '';
-    }
-  
     addItem(element) {
         this._elementsList.prepend(element);
     }
