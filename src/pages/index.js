@@ -85,9 +85,9 @@ initialCards.forEach((element) => {
 
 editButton.addEventListener('click', () => {
     PopupWithFormProfile.open();
-    const {name, job} =  userInfo.getUserInfo();
-    nameInput.value = name.textContent;
-    jobInput.value = job.textContent;
+    const data =  userInfo.getUserInfo();
+    nameInput.value = data.name;
+    jobInput.value = data.job;
     editProfileFormValidator.initForm()
 });
 addButton.addEventListener('click', ()  => {
