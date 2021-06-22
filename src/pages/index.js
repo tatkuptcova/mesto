@@ -34,11 +34,12 @@ const editProfileFormValidator = createValidator(validationConfig, popupProfile)
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        cardList.append(createCard(item));
+        cardList.addItem(createCard(item));
     }
   },
   elementsList
 );
+ cardList.rendererItems();
 
 //попап с картинкой
 const popupWithImage = new PopupWithImage('.popup_pic');
