@@ -34,10 +34,10 @@ const editProfileFormValidator = createValidator(validationConfig, popupProfile)
 const cardList = new Section(
   {
     items: initialCards,
-    renderer: (section, element) => {
+    renderer: (element) => {
         const card = createCard(element.name, element.link);
-        section.addItem(card.element);
-    }
+        cardList.addItem(card.element);
+    } 
   },
   elementsList
 );
