@@ -1,5 +1,5 @@
 export default class Section {
-    constructor({items,renderer}, elementsList) {
+    constructor({items, renderer}, elementsList) {
         this._items = items;
         this._renderer = renderer;
         this._elementsList = elementsList;
@@ -7,7 +7,7 @@ export default class Section {
   
     rendererItems() {
         this._items.forEach((item) => {
-            this._renderer(item);
+            this._renderer(this, item);
         });
     }
 
