@@ -31,10 +31,12 @@ const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
 
 //отвечает за отображение карточек
-const cardList = new Section({
+const cardList = new Section(
+  {
     items: initialCards,
-    renderer: (item) => {
-        cardList.addItem(createCard(item));
+    renderer: (section, element) => {
+        const card = createCard(element.name, element.link);
+        section.addItem(card.element);
     }
   },
   elementsList
@@ -77,12 +79,6 @@ function createValidator(validationConfig, popup) {
     validator.enableValidation()
     return validator
 };
-
-// Карточки, загружаемые по умолчанию
-initialCards.forEach((element) => {
-    const card = createCard(element.name, element.link)
-    cardList.addItem(card.element)
-});
 
 editButton.addEventListener('click', () => {
     popupWithFormProfile.open();
