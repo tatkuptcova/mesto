@@ -119,6 +119,34 @@
       </div>
     </section>
 
+    <section class="popup popup_avatar">
+      <div class="popoup__content popup__content_avatar">
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form name="form-newAvatar" class="popup__form popup__form_avatar">
+          <input
+            id="avatarLink"
+            autocomplete="off"
+            type="url"
+            name="avatarLink"
+            class="popup__input popup__input_avatar-link"
+            placeholder="Ссылка на картинку"
+            required
+          >
+          <span id="avatarLink-error" class="popup__input-error"></span> 
+          <button type="submit" class="popup__button-submit popup__button-submit_avatar">Сохранить</button>
+        </form>
+        <button type="button" class="button popup__close popup__close_avatar"></button>
+      </div>
+    </section>
+
+    <section class="popup popup_confirm">
+      <div class="popup__content popup__content_confirm">
+        <h3 class="popup__title">Вы уверены?</h3>
+        <button type="button" class="popup__button-submit popup__button-submit_confirm">Да</button>
+        <button type="button" class="button popup__close popup__close_confirm"></button>
+      </div>
+    </section>
+
     <template id="cards-template">
       <li class="elements__item">
         <button type="button" aria-label="Удалить" class="button elements__button-delete"></button>

@@ -18,6 +18,16 @@ import {
     jobInput,
 } from '../utils/constants.js'
 
+/*данные для сервера*/
+const api = new Api({
+    url: 'https://mesto.nomoreparties.space/v1/cohort-25',
+    headers: {
+      "content-type": 'application/json',
+      "authorization": 'f5fd2afd-988c-4392-86f3-d04957b3b6e7',
+    },
+  });
+
+
 //объект настроек для валидации с классами и селекторами
 const validationConfig = {
     formSelector: '.popup__form',
