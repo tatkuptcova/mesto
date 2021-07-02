@@ -29,11 +29,12 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(../blocks/popup/__input/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__form/__form_avatar/popup__form_avatar.css);
+@import url(../blocks/popup/__form/__form_confirm/popup__form_confirm.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/_pic/popup_pic.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
-
 
 
 @import url(../blocks/elements/elements.css);
