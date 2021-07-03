@@ -25,17 +25,19 @@
     <main class="container">
       <div class="content">
         <section class="profile">
+          <div class="profile__avatar">
             <img 
             class="profile__image" 
             src="<%=require('./images/avatar.jpg')%>" 
             alt="Профиль фото">
-            <div class="profile__info">
+          </div>
+          <div class="profile__info">
               <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
               <button type="button" aria-label="Редактировать" class="button profile__edit-button"></button>
               <p id="profileAbout" class="profile__about">Исследователь океана</p>
-            </div>
-            <button type="button" aria-label="Добавить картинку" class="button profile__button-add">
-            </button>
+          </div>
+          <button type="button" aria-label="Добавить картинку" class="button profile__button-add">
+          </button>
         </section>
 
           
@@ -170,7 +172,7 @@
     <section class="popup popup_confirm">
       <div class="popup__content popup__content_confirm">
         <button type="button" class="button popup__close popup__close_confirm"></button>
-        <form class="popup__form poup__form_confirm">
+        <form class="popup__form popup__form_confirm">
           <h3 class="popup__title">Вы уверены?</h3>
           <button type="button" class="popup__button-submit popup__button-submit_confirm">Да</button>
       </form>
