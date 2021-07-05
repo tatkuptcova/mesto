@@ -19,13 +19,13 @@ export default class Api {
         .then((res) => this._getResponse(res))
     }
 
-    // getInitialCards() {
-    //     return fetch(`${this._baseUrl}/cards`, {
-    //         method: 'GET',
-    //         headers: this._headers,
-    //     })
-    //     .then((res) => this._getResponse(res));
-    // }
+    getInitialCards() {
+        return fetch(`${this._baseUrl}/cards`, {
+            method: 'GET',
+            headers: this._headers,
+        })
+        .then((res) => this._getResponse(res));
+    }
 
     // postNewCard(item) {
     //     return fetch(`${this._baseUrl}/cards`, {

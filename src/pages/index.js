@@ -1,6 +1,6 @@
 import '../pages/index.css';
 
-import {initialCards} from '../utils/initial-cards.js';
+// import {initialCards} from '../utils/initial-cards.js';
 import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -44,7 +44,7 @@ const editProfileFormValidator = createValidator(validationConfig, popupProfile)
 //отвечает за отображение карточек
 const cardList = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer: (element) => {
         const card = createCard(element.name, element.link);
         cardList.addItem(card.element);
@@ -79,6 +79,14 @@ const userInfo = new UserInfo ({
 
 api.getUserInfo().then(data => {
     userInfo.setUserInfo(data.name, data.about, data.avatar)
+})
+
+api.getInitialCards().then((data) => {
+   data.forEach(c => {
+       console.log(c)
+       const card = createCard(c.name, c.link);
+       cardList.addItem(card.element);
+    })
 })
 
 // Создает класс под каждую карточку
