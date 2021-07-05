@@ -1,6 +1,5 @@
 import '../pages/index.css';
 
-// import {initialCards} from '../utils/initial-cards.js';
 import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
@@ -67,7 +66,10 @@ popupWithFormNewCard.setEventListeners();
 
 // Окно редактирования профиля пользователя
 const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
-    userInfo.setUserInfo(inputVals['name-input'], inputVals['about-input'])
+    api.changeUserInfo(inputVals['name-input'], inputVals['about-input']).then(data => {
+        console.log(data)
+        userInfo.setUserInfo(data.name, data.about)
+    });
 });
 popupWithFormProfile.setEventListeners();
 
@@ -79,15 +81,16 @@ const userInfo = new UserInfo ({
 
 api.getUserInfo().then(data => {
     userInfo.setUserInfo(data.name, data.about, data.avatar)
-})
+});
 
 api.getInitialCards().then((data) => {
    data.forEach(c => {
-       console.log(c)
+    //    console.log(c)
        const card = createCard(c.name, c.link);
        cardList.addItem(card.element);
     })
-})
+});
+
 
 // Создает класс под каждую карточку
 function createCard(title, link) {

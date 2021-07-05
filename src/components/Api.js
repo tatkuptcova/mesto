@@ -27,6 +27,15 @@ export default class Api {
         .then((res) => this._getResponse(res));
     }
 
+    changeUserInfo(newName, newJob) {
+        return fetch(`${this._baseUrl}/users/me`, {
+          method: 'PATCH',
+          headers: this._headers,
+          body: JSON.stringify({ name: newName, about: newJob }),
+        })
+          .then((res) => this._getResponse(res));
+      }
+
     // postNewCard(item) {
     //     return fetch(`${this._baseUrl}/cards`, {
     //       method: 'POST',
