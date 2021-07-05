@@ -58,7 +58,7 @@ export default class Card {
       img.src = this._link;
       img.alt = this._title;
       cardElement.querySelector('.elements__title').textContent = this._title;
-      cardElement.querySelector('.elements__like-count').textContent = this._likesCount;
+      cardElement.querySelector('.elements__likes-count').textContent = this._likesCount;
       this._setEventListeners();
       return cardElement
     }
