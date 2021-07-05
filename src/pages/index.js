@@ -59,8 +59,13 @@ popupWithImage.setEventListeners();
 
 //Окно с новой карточкой
 const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
-    const card = createCard(inputVals['nameplace-input'], inputVals['link-input']);
-    cardList.addItem(card.element);
+    api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
+        console.log(data);
+        const card = createCard(data.name, data.link);
+        cardList.addItem(card.element);
+    });
+    // const card = createCard(inputVals['nameplace-input'], inputVals['link-input']);
+    // cardList.addItem(card.element);
 });
 popupWithFormNewCard.setEventListeners();
 

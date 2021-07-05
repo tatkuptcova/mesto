@@ -36,15 +36,21 @@ export default class Api {
           .then((res) => this._getResponse(res));
       }
 
-    // postNewCard(item) {
-    //     return fetch(`${this._baseUrl}/cards`, {
-    //       method: 'POST',
-    //       headers: this._headers,
-    //       body: JSON.stringify(item),
+    postNewCard(name, link) {
+        return fetch(`${this._baseUrl}/cards`, {
+          method: 'POST',
+          headers: this._headers,
+          body: JSON.stringify({ name: name, link: link }),
+        })
+          .then((res) => this._getResponse(res));
+    }
+
+    // putLike(cardId) {
+    //     return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+    //       method: 'PUT',
+    //       headers: this.headers,
     //     })
-    //       .then((res) => this._handleResponse(res));
+    //       .then(res => this._getResponse(res))
     // }
-
-
 
 }    
