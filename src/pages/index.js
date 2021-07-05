@@ -61,7 +61,7 @@ popupWithImage.setEventListeners();
 const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
     api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
         console.log(data);
-        const card = createCard(data.name, data.link);
+        const card = createCard(data.name, data.link, data.likes.length);
         cardList.addItem(card.element);
     });
     // const card = createCard(inputVals['nameplace-input'], inputVals['link-input']);
@@ -91,15 +91,15 @@ api.getUserInfo().then(data => {
 api.getInitialCards().then((data) => {
    data.forEach(c => {
     //    console.log(c)
-       const card = createCard(c.name, c.link);
+       const card = createCard(c.name, c.link, c.likes.length);
        cardList.addItem(card.element);
     })
 });
 
 
 // Создает класс под каждую карточку
-function createCard(title, link) {
-    return new Card(title, link, elementTemplate, () => {
+function createCard(title, link, likesCount) {
+    return new Card(title, link, likesCount, elementTemplate, () => {
         popupWithImage.open(title,link);
     });
 }

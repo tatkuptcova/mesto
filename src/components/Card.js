@@ -1,8 +1,9 @@
 export default class Card {
 
-    constructor(title, link, elementTemplate, handleCardClick) {
+    constructor(title, link, likesCount, elementTemplate, handleCardClick) {
       this._title = title;
       this._link = link;
+      this._likesCount = likesCount;
       this._elementTemplate = elementTemplate;
       this._handleCardClick = handleCardClick;
       this._element = this._createCard();
@@ -57,6 +58,7 @@ export default class Card {
       img.src = this._link;
       img.alt = this._title;
       cardElement.querySelector('.elements__title').textContent = this._title;
+      cardElement.querySelector('.elements__like-count').textContent = this._likesCount;
       this._setEventListeners();
       return cardElement
     }

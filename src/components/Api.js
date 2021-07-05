@@ -45,12 +45,12 @@ export default class Api {
           .then((res) => this._getResponse(res));
     }
 
-    // putLike(cardId) {
-    //     return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-    //       method: 'PUT',
-    //       headers: this.headers,
-    //     })
-    //       .then(res => this._getResponse(res))
-    // }
+    likesCount(cardId) {
+        return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+          method: 'PUT',
+          headers: this.headers,
+        })
+          .then(res => this._getResponse(res))
+    }
 
 }    
