@@ -25,16 +25,16 @@
     <main class="container">
       <div class="content">
         <section class="profile">
-          <div class="profile__avatar">
+          <button class="profile__avatar">
             <img 
             class="profile__image" 
             src="<%=require('./images/avatar.jpg')%>" 
             alt="Профиль фото">
-          </div>
+          </button>
           <div class="profile__info">
-              <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
+              <h1 id="profileName" class="profile__name"></h1>
               <button type="button" aria-label="Редактировать" class="button profile__edit-button"></button>
-              <p id="profileAbout" class="profile__about">Исследователь океана</p>
+              <p id="profileAbout" class="profile__about"></p>
           </div>
           <button type="button" aria-label="Добавить картинку" class="button profile__button-add">
           </button>
@@ -68,7 +68,7 @@
             id="name-input"
             class="popup__input popup__input_edit-name"
             name="name"
-            value="Жак-Ив Кусто"
+            value=""
             placeholder="Имя"
             minlength="2"
             maxlength="40"
@@ -81,7 +81,7 @@
             id="about-input"
             class="popup__input popup__input_edit-about"
             name="about"
-            value="Исследователь океана"
+            value=""
             placeholder="О себе"
             minlength="2"
             maxlength="200"
