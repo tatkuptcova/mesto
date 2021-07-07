@@ -6,6 +6,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
 import {
     addButton,
@@ -53,7 +54,11 @@ const cardList = new Section(
 );
  cardList.rendererItems();
 
-//попап с картинкой
+//Окно подтверждение удаления карточки
+const popupWithSubmit = new PopupWithSubmit('.popup_confirm');
+popupWithSubmit.setEventListeners();
+
+//Окно с картинкой
 const popupWithImage = new PopupWithImage('.popup_pic');
 popupWithImage.setEventListeners();
 
@@ -119,6 +124,7 @@ editButton.addEventListener('click', () => {
     jobInput.value = data.job;
     editProfileFormValidator.initForm()
 });
+
 addButton.addEventListener('click', ()  => {
     popupWithFormNewCard.open();
     addCardFormValidator.initForm()

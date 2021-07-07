@@ -50,7 +50,7 @@ export default class Api {
           method: 'PUT',
           headers: this.headers,
         })
-          .then(res => this._getResponse(res))
+          .then(res => this._getResponse(res));
     }
 
 }    
