@@ -1,3 +1,5 @@
+import PopupWithSubmit from '../components/PopupWithSubmit.js';
+
 export default class Card {
 
     constructor(title, link, likesCount, elementTemplate, handleCardClick) {
@@ -50,6 +52,12 @@ export default class Card {
         });
     }
   
+    _toggleDeleteButton = () => {
+      const popupWithSubmit = new PopupWithSubmit('.popup_confirm');
+      popupWithSubmit.setEventListeners();
+      popupWithSubmit.open();
+    }
+
     _createCard() {
       const elementTemplate = document.querySelector(this._elementTemplate).content;
       const cardElement = elementTemplate.querySelector('.elements__item').cloneNode(true);

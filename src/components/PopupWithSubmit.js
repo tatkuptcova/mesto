@@ -15,7 +15,6 @@ export default class PopupWithSubmit extends Popup {
         });
     }
 
-     //присваиваем обработчик сабмита
     setSubmitCallback(handleSubmitForm) {
         this._handleSubmitForm = handleSubmitForm;
     }
