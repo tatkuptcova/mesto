@@ -2,7 +2,7 @@ import PopupWithSubmit from '../components/PopupWithSubmit.js';
 
 export default class Card {
 
-    constructor(currentUserId, cardData, elementTemplate, handleCardClick) {
+    constructor(currentUserId, cardData, elementTemplate, handleCardClick, deleteHandler) {
       console.log(cardData)
       this._allData = cardData;
       this._currentUserId = currentUserId;
@@ -11,6 +11,7 @@ export default class Card {
       this._likesCount = cardData.likes.length;
       this._elementTemplate = elementTemplate;
       this._handleCardClick = handleCardClick;
+      this._deleteHandler = deleteHandler;
       this._element = this._createCard();
     }
   
@@ -32,7 +33,7 @@ export default class Card {
         .classList.toggle('elements__button-like_active');
     }
 
-    _toggleDeleteButton() {
+    _deleteCard() {
       this._element.remove();
       this._element = null;
     }
@@ -47,7 +48,7 @@ export default class Card {
       const deleteBtn = this._element.querySelector('.elements__button-delete')
       if (deleteBtn) {
         deleteBtn.addEventListener('click', () => {
-          this._toggleDeleteButton();
+          this._showDeleteConfirmation();
         });
       }
       
@@ -59,8 +60,17 @@ export default class Card {
     }
   
     //Окно подтверждение удаления карточки
-    _toggleDeleteButton = () => {
-      const popupWithSubmit = new PopupWithSubmit('.popup_confirm');
+    _showDeleteConfirmation() {
+      const popupWithSubmit = new PopupWithSubmit('.popup_confirm', () => {
+        this._deleteHandler()
+        .then(() => this._deleteCard())
+        .then(() => popupWithSubmit.close())
+        .catch((err) => {
+          console.log(err);
+        })
+          // .then(() => this._deleteCard())
+          // .then(() => popupWithSubmit.close())
+      });
       popupWithSubmit.setEventListeners();
       popupWithSubmit.open();
     }

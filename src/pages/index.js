@@ -93,15 +93,23 @@ api.getUserInfo().then(data => {
             cardList.addItem(card.element);
          })
      });
-}). catch((err) => {
+}).catch((err) => {
     console.log(err);
 })
 
-/// Создает класс под каждую карточку
+// Создает класс под каждую карточку
 function createCard(cardData) {
-    return new Card(userInfo.getUserInfo().userId, cardData, elementTemplate, () => {
-        popupWithImage.open(cardData.title, cardData.link);
-    });
+    return new Card(
+        userInfo.getUserInfo().userId,
+        cardData,
+        elementTemplate, 
+        () => {
+            popupWithImage.open(cardData.title, cardData.link);
+        },
+        () => {
+            return api.deleteCard(cardData._id)
+        }
+    );
 }
 
 function createValidator(validationConfig, popup) {

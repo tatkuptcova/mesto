@@ -54,10 +54,10 @@ export default class Api {
     }
     
     dislikesCount(cardId) {
-      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-          method: 'DELETE',
-          headers: this._headers,
-      }).then(res => this._getResponse(res))
+        return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+            method: 'DELETE',
+            headers: this._headers,
+        }).then(res => this._getResponse(res))
     }
 
     deleteCard(cardId) {
