@@ -97,7 +97,7 @@ api.getUserInfo().then(data => {
 // Создает класс под каждую карточку
 function createCard(cardData) {
     return new Card(userInfo.getUserInfo().userId, cardData, elementTemplate, () => {
-        popupWithImage.open(title, link);
+        popupWithImage.open(cardData.title, cardData.link);
     });
 }
 
