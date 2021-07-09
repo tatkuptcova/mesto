@@ -108,6 +108,12 @@ function createCard(cardData) {
         },
         () => {
             return api.deleteCard(cardData._id)
+        },
+        () => {
+            return api.like(cardData._id)
+        },
+        () => {
+            return api.dislike(cardData._id)
         }
     );
 }
