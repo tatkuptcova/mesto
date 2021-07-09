@@ -9,11 +9,13 @@ export default class UserInfo {
     getUserInfo() {
       return {
         name: this.name.textContent,
-        job: this.job.textContent
+        job: this.job.textContent,
+        userId: this._userId
       } 
     }
   
-    setUserInfo(newName, newJob, newAvatar) {
+    setUserInfo(userId, newName, newJob, newAvatar) {
+      this._userId = userId
       this.name.textContent = newName;
       this.job.textContent = newJob;
       this.avatar.scr = newAvatar;

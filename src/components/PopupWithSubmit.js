@@ -18,5 +18,4 @@ export default class PopupWithSubmit extends Popup {
     setSubmitCallback(handleSubmitForm) {
         this._handleSubmitForm = handleSubmitForm;
     }
-
 }

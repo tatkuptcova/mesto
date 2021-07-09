@@ -6,7 +6,6 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-// import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
 import {
     addButton,
@@ -27,7 +26,6 @@ const api = new Api({
       "content-type": 'application/json',
     },
 });
-
 
 //объект настроек для валидации с классами и селекторами
 const validationConfig = {
@@ -52,11 +50,7 @@ const cardList = new Section(
   },
   elementsList
 );
- cardList.rendererItems();
-
-//Окно подтверждение удаления карточки
-// const popupWithSubmit = new PopupWithSubmit('.popup_confirm');
-// popupWithSubmit.setEventListeners();
+cardList.rendererItems();
 
 //Окно с картинкой
 const popupWithImage = new PopupWithImage('.popup_pic');
@@ -65,8 +59,7 @@ popupWithImage.setEventListeners();
 //Окно с новой карточкой
 const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
     api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
-        console.log(data);
-        const card = createCard(data.name, data.link, data.likes.length);
+        const card = createCard(data);
         cardList.addItem(card.element);
     });
     // const card = createCard(inputVals['nameplace-input'], inputVals['link-input']);
@@ -90,22 +83,21 @@ const userInfo = new UserInfo ({
 });
 
 api.getUserInfo().then(data => {
-    userInfo.setUserInfo(data.name, data.about, data.avatar)
+    console.log(data)
+    userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+}).then( () => {
+    api.getInitialCards().then((data) => {
+        data.forEach(c => {
+            const card = createCard(c);
+            cardList.addItem(card.element);
+         })
+     });
 });
-
-api.getInitialCards().then((data) => {
-   data.forEach(c => {
-    //    console.log(c)
-       const card = createCard(c.name, c.link, c.likes.length);
-       cardList.addItem(card.element);
-    })
-});
-
 
 // Создает класс под каждую карточку
-function createCard(title, link, likesCount) {
-    return new Card(title, link, likesCount, elementTemplate, () => {
-        popupWithImage.open(title,link);
+function createCard(cardData) {
+    return new Card(userInfo.getUserInfo().userId, cardData, elementTemplate, () => {
+        popupWithImage.open(title, link);
     });
 }
 

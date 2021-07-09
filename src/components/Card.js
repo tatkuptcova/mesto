@@ -2,10 +2,13 @@ import PopupWithSubmit from '../components/PopupWithSubmit.js';
 
 export default class Card {
 
-    constructor(title, link, likesCount, elementTemplate, handleCardClick) {
-      this._title = title;
-      this._link = link;
-      this._likesCount = likesCount;
+    constructor(currentUserId, cardData, elementTemplate, handleCardClick) {
+      console.log(cardData)
+      this._allData = cardData;
+      this._currentUserId = currentUserId;
+      this._title = cardData.name;
+      this._link = cardData.link;
+      this._likesCount = cardData.likes.length;
       this._elementTemplate = elementTemplate;
       this._handleCardClick = handleCardClick;
       this._element = this._createCard();
@@ -40,11 +43,14 @@ export default class Card {
         .addEventListener('click', () => {
           this._toggleLikeButton();
         });
-      this._element
-        .querySelector('.elements__button-delete')
-        .addEventListener('click', () => {
+
+      const deleteBtn = this._element.querySelector('.elements__button-delete')
+      if (deleteBtn) {
+        deleteBtn.addEventListener('click', () => {
           this._toggleDeleteButton();
         });
+      }
+      
       this._element
         .querySelector('.elements__image')
         .addEventListener('click', () => {
@@ -52,6 +58,7 @@ export default class Card {
         });
     }
   
+    //Окно подтверждение удаления карточки
     _toggleDeleteButton = () => {
       const popupWithSubmit = new PopupWithSubmit('.popup_confirm');
       popupWithSubmit.setEventListeners();
@@ -67,7 +74,15 @@ export default class Card {
       img.alt = this._title;
       cardElement.querySelector('.elements__title').textContent = this._title;
       cardElement.querySelector('.elements__likes-count').textContent = this._likesCount;
+      if (!this._isCardOwnedByCurrentUser()) {
+        cardElement.querySelector('.elements__button-delete').remove();
+      }
       this._setEventListeners();
       return cardElement
+    }
+
+    _isCardOwnedByCurrentUser() {
+      const cardOwnerId = this._allData.owner._id
+      return this._currentUserId == cardOwnerId
     }
 }
