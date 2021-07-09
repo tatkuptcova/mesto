@@ -34,7 +34,7 @@ export default class Api {
           body: JSON.stringify({ name: newName, about: newJob }),
         })
           .then((res) => this._getResponse(res));
-      }
+    }
 
     postNewCard(name, link) {
         return fetch(`${this._baseUrl}/cards`, {
@@ -53,11 +53,28 @@ export default class Api {
           .then(res => this._getResponse(res));
     }
     
+    dislikesCount(cardId) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+          method: 'DELETE',
+          headers: this._headers,
+      }).then(res => this._getResponse(res))
+    }
+
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
           method: 'DELETE',
           headers: this._headers,
         })
           .then((res) => this._getResponse(res));
+    }
+
+    updateAvatar(link) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: link
+            }),
+        }).then(res => this._getResponse(res))
     }
 }    

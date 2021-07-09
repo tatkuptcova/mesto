@@ -18,6 +18,7 @@ import {
     jobInput,
 } from '../utils/constants.js'
 
+
 /*данные для сервера*/
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-25',
@@ -92,9 +93,11 @@ api.getUserInfo().then(data => {
             cardList.addItem(card.element);
          })
      });
-});
+}). catch((err) => {
+    console.log(err);
+})
 
-// Создает класс под каждую карточку
+/// Создает класс под каждую карточку
 function createCard(cardData) {
     return new Card(userInfo.getUserInfo().userId, cardData, elementTemplate, () => {
         popupWithImage.open(cardData.title, cardData.link);
