@@ -8,7 +8,7 @@
 
 **"Место"** - это типовой однастраничный сайт. 
 
-Проектная работа на GitHub Pages https://tatkuptcova.github.io/mesto/
+Проектная работа на GitHub Pages https://tatkuptcova.github.io/mesto
 
 В проектной работе была применено:
 * работа с макетом в Figma
@@ -36,7 +36,7 @@
 Установлен Webpack, Babel, настроена обработка CSS, HTML, изображений и шрифтов.
 
 **Инструкция по установке:**
-git clone https://tatkuptcova.github.io/mesto/
+git clone https://tatkuptcova.github.io/mesto
 
 cd mesto
 
