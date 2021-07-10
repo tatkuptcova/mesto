@@ -37,7 +37,7 @@
 
 **Инструкция по установке:**
 
-git clone https://tatkuptcova.github.io/mesto/
+git clone https://tatkuptcova.github.io/mesto
 
 cd mesto
 
