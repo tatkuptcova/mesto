@@ -79,11 +79,15 @@ export default class Card {
       const popupWithSubmit = new PopupWithSubmit(
         '.popup_confirm', 
         () => {
+          popupWithSubmit.showSaving()
           this._asyncDeleteHandler()
           .then(() => this._deleteCard())
-          .then(() => popupWithSubmit.close())
           .catch((err) => {
             console.log(err);
+          })
+          .finally(() => {
+            popupWithSubmit.close();
+            popupWithSubmit.restoreDefaultText();
           })
         }
       );

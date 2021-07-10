@@ -62,22 +62,38 @@ popupWithImage.setEventListeners();
 
 //Окно с новой карточкой
 const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
+    popupWithFormNewCard.showSaving();
     api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
         const card = createCard(data);
         cardList.addItem(card.element);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .finally(() => {
+        popupWithFormNewCard.close();
+        popupWithFormNewCard.restoreDefaultText()
     });
-    // const card = createCard(inputVals['nameplace-input'], inputVals['link-input']);
-    // cardList.addItem(card.element);
-});
+})
+
 popupWithFormNewCard.setEventListeners();
 
 // Окно редактирования профиля пользователя
 const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
+    popupWithFormProfile.showSaving();
     api.changeUserInfo(inputVals['name-input'], inputVals['about-input']).then(data => {
         console.log(data)
         userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .finally(() => {
+        popupWithFormProfile.close();
+        popupWithFormProfile.restoreDefaultText();
     });
-});
+})
+
 popupWithFormProfile.setEventListeners();
 
 const userInfo = new UserInfo ({
@@ -87,15 +103,21 @@ const userInfo = new UserInfo ({
 });
 
 const popupWithAvatar = new PopupWithForm('.popup_avatar', (avatarInput)  => {
+    popupWithAvatar.showSaving();
     api.updateAvatar(avatarInput.avatarLink).then((data) => {
         console.log(data)
         userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .finally(() => {
         popupWithAvatar.close();
+        popupWithAvatar.restoreDefaultText();
     })
 })
+
 popupWithAvatar.setEventListeners();
-
-
 
 api.getUserInfo().then(data => {
     console.log(data)
@@ -106,10 +128,11 @@ api.getUserInfo().then(data => {
             const card = createCard(c);
             cardList.addItem(card.element);
          })
-     });
-}).catch((err) => {
-    console.log(err);
+    });
 })
+    .catch((err) => {
+        console.log(err);
+    })
 
 // Создает класс под каждую карточку
 function createCard(cardData) {

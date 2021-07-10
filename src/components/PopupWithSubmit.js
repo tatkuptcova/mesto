@@ -5,6 +5,8 @@ export default class PopupWithSubmit extends Popup {
         super(popupSelector);
         this._form = this._popupSelector.querySelector('.popup__form');
         this._handleSubmitForm = handleSubmitForm;
+        this._btnSubmit = this._popupSelector.querySelector('.popup__button-submit');
+        this._btnTextDefault = this._btnSubmit.textContent;
     }
 
     //добавляем слушатель сабмита
@@ -15,5 +17,15 @@ export default class PopupWithSubmit extends Popup {
             console.log('Submitted')
             this._handleSubmitForm();
         });
+    }
+    
+    showSaving() {
+        this._btnSubmit.textContent = 'Удаление...';
+        this._btnSubmit.disabled = true;
+    }
+
+    restoreDefaultText() {
+        this._btnSubmit.textContent = this._btnTextDefault;
+        this._btnSubmit.disabled = false;
     }
 }
