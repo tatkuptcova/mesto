@@ -12,6 +12,9 @@ export const elementsList = document.querySelector(".elements__catalogue");
 export const editButton = document.querySelector('.profile__edit-button');
 export const popupProfile = document.querySelector('.popup_profile');
 
+export const profileAvatar = document.querySelector('.profile__avatar');
+export const popupAvatar = document.querySelector('.popup_avatar');
+
 export const formElementProfile = document.querySelector('.popup__form_profile');
 
 export const nameInput = document.querySelector('.popup__input_edit-name');

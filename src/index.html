@@ -7,27 +7,37 @@
   <meta name="Description" content="Автор: Татьяна Купцова, 
   Проектная работа: Место, Сайт: создан в рамках учебы в Яндекс Практикум, 
   Курс: Веб-разработка">
-  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Место</title>
 </head>
 
 <body class="page">
 
+  <!-- ***************************************************************
+      Шапка сайта
+    -->
     <header class="header">
         <img src="<%=require('./images/logo.svg')%>" alt="Лого" class="header__logo">
     </header>
 
+     <!-- ************************************************************
+      Содержимое сайта
+    -->
     <main class="container">
       <div class="content">
         <section class="profile">
-            <img class="profile__image" src="<%=require('./images/avatar.jpg')%>" alt="Профиль фото">
-            <div class="profile__info">
-              <h1 id="profileName" class="profile__name">Жак-Ив Кусто</h1>
+          <div class="profile__avatar">
+            <img 
+            class="profile__image" 
+            src="<%=require('./images/avatar.jpg')%>" 
+            alt="Профиль фото">
+          </div>
+          <div class="profile__info">
+              <h1 id="profileName" class="profile__name"></h1>
               <button type="button" aria-label="Редактировать" class="button profile__edit-button"></button>
-              <p id="profileAbout" class="profile__about">Исследователь океана</p>
-            </div>
-            <button type="button" aria-label="Добавить картинку" class="button profile__button-add">
-            </button>
+              <p id="profileAbout" class="profile__about"></p>
+          </div>
+          <button type="button" aria-label="Добавить картинку" class="button profile__button-add">
+          </button>
         </section>
 
           
@@ -38,10 +48,16 @@
       </div>
     </main>
 
+    <!-- ***************************************************************
+      Подвал сайта
+    -->
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Tatiana KUPTSOVA</p>
     </footer>
 
+     <!-- ***************************************************************
+      Всплывающее окно редактирования профиля
+    -->
     <section class="popup popup_profile">
       <div class="popup__content popup__content_profile">
         <button type="button" aria-label="Закрыть" class="button popup__close popup__close_profile"></button>
@@ -52,7 +68,7 @@
             id="name-input"
             class="popup__input popup__input_edit-name"
             name="name"
-            value="Жак-Ив Кусто"
+            value=""
             placeholder="Имя"
             minlength="2"
             maxlength="40"
@@ -65,7 +81,7 @@
             id="about-input"
             class="popup__input popup__input_edit-about"
             name="about"
-            value="Исследователь океана"
+            value=""
             placeholder="О себе"
             minlength="2"
             maxlength="200"
@@ -77,7 +93,35 @@
         </form>
       </div>
     </section>
+
+       <!-- ***************************************************************
+      Всплывающее окно изменения аватара
+    -->
+    <section class="popup popup_avatar">
+      <div class="popup__content popup__content_avatar">
+        <button type="button" aria-label="Закрыть" class="button popup__close popup__close_avatar"></button>
+         <form name="form-newAvatar" class="popup__form popup__form_avatar" novalidate>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <input
+            id="avatarLink"
+            autocomplete="off"
+            type="url"
+            name="avatarLink"
+            pattern="https?://.+"
+            class="popup__input popup__input_avatar-link"
+            placeholder="Ссылка на картинку"
+            required
+          >
+          <span id="avatarLink-error" class="popup__input-error"></span> 
+          <button type="submit" class="popup__button-submit popup__button-submit_avatar">Сохранить</button>
+        </form>
+        
+      </div>
+    </section>
   
+     <!-- ***************************************************************
+      Всплывающее окно добавления фотографии
+    -->
     <section class="popup popup_card">
       <div class="popup__content popup__content_add">
         <button type="button" aria-label="Закрыть" class="button popup__close popup__close_add"></button>
@@ -111,6 +155,9 @@
       </div>
     </section>
 
+    <!-- ***************************************************************
+      Всплывающее окно просмотра фотографии
+    -->
     <section class="popup popup_pic">
       <div class="popup__container">
         <img class="popup__image" src="#" alt="#">
@@ -119,13 +166,32 @@
       </div>
     </section>
 
+  <!-- ***************************************************************
+      Всплывающее окно подтверждения
+    -->
+    <section class="popup popup_confirm">
+      <div class="popup__content popup__content_confirm">
+        <button type="button" aria-label="Закрыть" class="button popup__close popup__close_confirm"></button>
+        <form class="popup__form popup__form_confirm" novalidate>
+          <h3 class="popup__title">Вы уверены?</h3>
+          <button type="submit" class="popup__button-submit popup__button-submit_confirm">Да</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ***************************************************************
+    Подключаем шаблон
+  -->
     <template id="cards-template">
       <li class="elements__item">
         <button type="button" aria-label="Удалить" class="button elements__button-delete"></button>
           <img class="elements__image" src="#" alt="#">
           <div class="elements__info">
             <h2 class="elements__title"></h2>
-            <button type="button" aria-label="Нравится" class="button elements__button-like"></button>
+            <div class="elements__place-like">
+              <button type="button" aria-label="Нравится" class="button elements__button-like"></button>
+              <span class="elements__likes-count">0</span>
+            </div>
           </div>
       </li>
     </template>
