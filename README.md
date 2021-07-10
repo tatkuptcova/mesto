@@ -8,7 +8,7 @@
 
 **"Место"** - это типовой однастраничный сайт. 
 
-Проектная работа на GitHub Pages https://tatkuptcova.github.io/mesto/
+Проектная работа на GitHub Pages https://tatkuptcova.github.io/mesto
 
 В проектной работе была применено:
 * работа с макетом в Figma
