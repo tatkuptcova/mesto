@@ -10,6 +10,8 @@ import UserInfo from '../components/UserInfo.js';
 import {
     addButton,
     popupNewCard,
+    profileAvatar,
+    popupAvatar,
     elementTemplate,
     elementsList,
     editButton,
@@ -39,6 +41,7 @@ const validationConfig = {
 
 const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
+const avatarValidator = createValidator(validationConfig, popupAvatar);
 
 //отвечает за отображение карточек
 const cardList = new Section(
@@ -72,7 +75,7 @@ popupWithFormNewCard.setEventListeners();
 const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
     api.changeUserInfo(inputVals['name-input'], inputVals['about-input']).then(data => {
         console.log(data)
-        userInfo.setUserInfo(data.name, data.about)
+        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
     });
 });
 popupWithFormProfile.setEventListeners();
@@ -82,6 +85,17 @@ const userInfo = new UserInfo ({
     profileJobSelector: '.profile__about',
     profileAvatarSelector: '.profile__image'
 });
+
+const popupWithAvatar = new PopupWithForm('.popup_avatar', (avatarInput)  => {
+    api.updateAvatar(avatarInput.avatarLink).then((data) => {
+        console.log(data)
+        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+        popupWithAvatar.close();
+    })
+})
+popupWithAvatar.setEventListeners();
+
+
 
 api.getUserInfo().then(data => {
     console.log(data)
@@ -137,4 +151,9 @@ editButton.addEventListener('click', () => {
 addButton.addEventListener('click', ()  => {
     popupWithFormNewCard.open();
     addCardFormValidator.initForm()
+});
+
+profileAvatar.addEventListener('click', () => {
+    popupWithAvatar.open();
+    avatarValidator.initForm()
 });

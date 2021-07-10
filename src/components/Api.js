@@ -50,14 +50,15 @@ export default class Api {
           method: 'PUT',
           headers: this._headers,
         })
-          .then(res => this._getResponse(res));
+          .then((res) => this._getResponse(res));
     }
     
     dislike(cardId) {
         return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
             method: 'DELETE',
             headers: this._headers,
-        }).then(res => this._getResponse(res))
+        })
+          .then((res) => this._getResponse(res))
     }
 
     deleteCard(cardId) {
@@ -72,9 +73,8 @@ export default class Api {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
-            body: JSON.stringify({
-                avatar: link
-            }),
-        }).then(res => this._getResponse(res))
+            body: JSON.stringify({ avatar: link}),
+        })
+          .then((res) => this._getResponse(res))
     }
 }    

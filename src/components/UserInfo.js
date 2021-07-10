@@ -18,6 +18,6 @@ export default class UserInfo {
       this._userId = userId
       this.name.textContent = newName;
       this.job.textContent = newJob;
-      this.avatar.scr = newAvatar;
+      this.avatar.src = newAvatar;
     }
   }
