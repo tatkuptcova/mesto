@@ -58,7 +58,7 @@ const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
     return api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
         const card = createCard(data);
         cardList.addItem(card.element);
-        popupWithFormNewCard.close()
+        popupWithFormNewCard.close();
     });
 })
 
@@ -67,9 +67,9 @@ popupWithFormNewCard.setEventListeners();
 // Окно редактирования профиля пользователя
 const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
     return api.changeUserInfo(inputVals['name-input'], inputVals['about-input']).then(data => {
-        console.log(data)
-        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
-        popupWithFormProfile.close()
+        console.log(data);
+        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar);
+        popupWithFormProfile.close();
     });
 })
 
@@ -83,9 +83,9 @@ const userInfo = new UserInfo ({
 
 const popupWithAvatar = new PopupWithForm('.popup_avatar', (avatarInput)  => {
     return api.updateAvatar(avatarInput.avatarLink).then((data) => {
-        console.log(data)
-        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
-        popupWithAvatar.close()
+        console.log(data);
+        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar);
+        popupWithAvatar.close();
     });
 })
 
