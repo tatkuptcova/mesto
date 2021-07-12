@@ -27,7 +27,6 @@ export default class PopupWithForm extends Popup {
             console.log(err);
         })
         .finally(() => {
-            this.close();
             this.restoreDefaultText();
         });
     }

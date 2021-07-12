@@ -7,6 +7,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+
 import {
     addButton,
     popupNewCard,
@@ -18,6 +19,7 @@ import {
     popupProfile,
     nameInput,
     jobInput,
+    validationConfig,
 } from '../utils/constants.js'
 
 
@@ -29,15 +31,6 @@ const api = new Api({
       "content-type": 'application/json',
     },
 });
-
-//объект настроек для валидации с классами и селекторами
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-submit',
-    inputErrorClass: 'popup__input_type_error',
-    errorActiveClass: 'popup__input-error_active',
-};
 
 const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
@@ -65,6 +58,7 @@ const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
     return api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
         const card = createCard(data);
         cardList.addItem(card.element);
+        popupWithFormNewCard.close()
     });
 })
 
@@ -75,6 +69,7 @@ const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => 
     return api.changeUserInfo(inputVals['name-input'], inputVals['about-input']).then(data => {
         console.log(data)
         userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+        popupWithFormProfile.close()
     });
 })
 
@@ -90,6 +85,7 @@ const popupWithAvatar = new PopupWithForm('.popup_avatar', (avatarInput)  => {
     return api.updateAvatar(avatarInput.avatarLink).then((data) => {
         console.log(data)
         userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+        popupWithAvatar.close()
     });
 })
 
