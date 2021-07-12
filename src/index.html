@@ -184,15 +184,17 @@
   -->
     <template id="cards-template">
       <li class="elements__item">
-        <button type="button" aria-label="Удалить" class="button elements__button-delete"></button>
-          <img class="elements__image" src="#" alt="#">
-          <div class="elements__info">
-            <h2 class="elements__title"></h2>
-            <div class="elements__place-like">
-              <button type="button" aria-label="Нравится" class="button elements__button-like"></button>
-              <span class="elements__likes-count">0</span>
-            </div>
+        <button type="button" aria-label="Удалить" class="elements__button-delete">
+          <img src="<%=require('./images/delete_button.svg')%>" alt="Удалить">
+        </button>
+        <img class="elements__image" src="#" alt="#">
+        <div class="elements__info">
+          <h2 class="elements__title"></h2>
+          <div class="elements__place-like">
+            <button type="button" aria-label="Нравится" class="button elements__button-like"></button>
+            <span class="elements__likes-count">0</span>
           </div>
+        </div>
       </li>
     </template>
  
