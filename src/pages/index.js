@@ -57,7 +57,7 @@ popupWithImage.setEventListeners();
 const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
     return api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
         const card = createCard(data);
-        cardList.addItem(card.element);
+        cardList.prependItem(card.element);
         popupWithFormNewCard.close();
     });
 })
@@ -99,7 +99,7 @@ api.getUserInfo().then(data => {
         data.forEach(c => {
             const card = createCard(c);
             cardList.addItem(card.element);
-         })
+        })
     });
 })
     .catch((err) => {
@@ -136,10 +136,10 @@ function createValidator(validationConfig, popup) {
 };
 
 editButton.addEventListener('click', () => {
-    popupWithFormProfile.open();
     const data =  userInfo.getUserInfo();
     nameInput.value = data.name;
     jobInput.value = data.job;
+    popupWithFormProfile.open();
     editProfileFormValidator.initForm()
 });
 
