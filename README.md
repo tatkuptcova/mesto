@@ -36,7 +36,6 @@
 Установлен Webpack, Babel, настроена обработка CSS, HTML, изображений и шрифтов.
 
 **Инструкция по установке:**
-
 git clone https://tatkuptcova.github.io/mesto
 
 cd mesto
