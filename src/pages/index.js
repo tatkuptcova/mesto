@@ -141,7 +141,7 @@ editButton.addEventListener('click', () => {
     jobInput.value = data.job;
     
     popupWithFormProfile.open();
-    editProfileFormValidator.initForm()
+    // editProfileFormValidator.initForm()
 });
 
 addButton.addEventListener('click', ()  => {
