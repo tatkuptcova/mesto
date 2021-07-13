@@ -25,3 +25,12 @@ export const jobDisplay = document.querySelector('#profileAbout');
 
 export const popupImage = document.querySelector('.popup__image');
 export const popupCaption = document.querySelector('.popup__caption');
+
+//объект настроек для валидации с классами и селекторами
+export const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button-submit',
+    inputErrorClass: 'popup__input_type_error',
+    errorActiveClass: 'popup__input-error_active',
+};

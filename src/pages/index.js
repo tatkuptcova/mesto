@@ -7,6 +7,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+
 import {
     addButton,
     popupNewCard,
@@ -18,6 +19,7 @@ import {
     popupProfile,
     nameInput,
     jobInput,
+    validationConfig,
 } from '../utils/constants.js'
 
 
@@ -29,15 +31,6 @@ const api = new Api({
       "content-type": 'application/json',
     },
 });
-
-//объект настроек для валидации с классами и селекторами
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-submit',
-    inputErrorClass: 'popup__input_type_error',
-    errorActiveClass: 'popup__input-error_active',
-};
 
 const addCardFormValidator = createValidator(validationConfig, popupNewCard);
 const editProfileFormValidator = createValidator(validationConfig, popupProfile);
@@ -64,7 +57,8 @@ popupWithImage.setEventListeners();
 const popupWithFormNewCard = new PopupWithForm('.popup_card', (inputVals) => {
     return api.postNewCard(inputVals['nameplace-input'], inputVals['link-input']).then(data => {
         const card = createCard(data);
-        cardList.addItem(card.element);
+        cardList.prependItem(card.element);
+        popupWithFormNewCard.close();
     });
 })
 
@@ -73,8 +67,9 @@ popupWithFormNewCard.setEventListeners();
 // Окно редактирования профиля пользователя
 const popupWithFormProfile = new PopupWithForm('.popup_profile', (inputVals) => {
     return api.changeUserInfo(inputVals['name-input'], inputVals['about-input']).then(data => {
-        console.log(data)
-        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+        console.log(data);
+        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar);
+        popupWithFormProfile.close();
     });
 })
 
@@ -88,8 +83,9 @@ const userInfo = new UserInfo ({
 
 const popupWithAvatar = new PopupWithForm('.popup_avatar', (avatarInput)  => {
     return api.updateAvatar(avatarInput.avatarLink).then((data) => {
-        console.log(data)
-        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
+        console.log(data);
+        userInfo.setUserInfo(data._id, data.name, data.about, data.avatar);
+        popupWithAvatar.close();
     });
 })
 
@@ -103,7 +99,7 @@ api.getUserInfo().then(data => {
         data.forEach(c => {
             const card = createCard(c);
             cardList.addItem(card.element);
-         })
+        })
     });
 })
     .catch((err) => {
@@ -117,7 +113,7 @@ function createCard(cardData) {
         cardData,
         elementTemplate, 
         () => {
-            popupWithImage.open(cardData.title, cardData.link);
+            popupWithImage.open(cardData.name, cardData.link);
         },
         () => {
             return api.deleteCard(cardData._id)
@@ -140,10 +136,11 @@ function createValidator(validationConfig, popup) {
 };
 
 editButton.addEventListener('click', () => {
-    popupWithFormProfile.open();
     const data =  userInfo.getUserInfo();
     nameInput.value = data.name;
     jobInput.value = data.job;
+    
+    popupWithFormProfile.open();
     editProfileFormValidator.initForm()
 });
 
