@@ -113,7 +113,7 @@ function createCard(cardData) {
         cardData,
         elementTemplate, 
         () => {
-            popupWithImage.open(cardData.title, cardData.link);
+            popupWithImage.open(cardData.name, cardData.link);
         },
         () => {
             return api.deleteCard(cardData._id)
@@ -139,6 +139,7 @@ editButton.addEventListener('click', () => {
     const data =  userInfo.getUserInfo();
     nameInput.value = data.name;
     jobInput.value = data.job;
+    
     popupWithFormProfile.open();
     editProfileFormValidator.initForm()
 });

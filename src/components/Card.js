@@ -106,7 +106,7 @@ export default class Card {
       if (!this._isCardOwnedByCurrentUser()) {
         cardElement.querySelector('.elements__button-delete').remove();
       }
-      this._showLikes()
+      this._showLikes();
       this._setEventListeners();
       return cardElement
     }
