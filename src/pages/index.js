@@ -6,6 +6,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from '../components/UserInfo.js';
 
 import {
@@ -91,6 +92,9 @@ const popupWithAvatar = new PopupWithForm('.popup_avatar', (avatarInput)  => {
 
 popupWithAvatar.setEventListeners();
 
+const popupWithSubmit = new PopupWithSubmit('.popup_confirm');
+popupWithSubmit.setEventListeners();
+
 api.getUserInfo().then(data => {
     console.log(data)
     userInfo.setUserInfo(data._id, data.name, data.about, data.avatar)
@@ -115,8 +119,11 @@ function createCard(cardData) {
         () => {
             popupWithImage.open(cardData.name, cardData.link);
         },
-        () => {
-            return api.deleteCard(cardData._id)
+        (card) => {
+            popupWithSubmit.open(() => {
+                return api.deleteCard(cardData._id)
+                .then(() => card.deleteCard())
+            })
         },
         () => {
             return api.like(cardData._id)
