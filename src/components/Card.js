@@ -7,7 +7,7 @@ export default class Card {
       cardData, 
       elementTemplate,
       handleCardClick,
-      asyncDeleteHandler,
+      handleDeleteClick,
       asyncLikeHandler,
       asyncDislikeHandler
     ) {
@@ -16,7 +16,7 @@ export default class Card {
       this._currentUserId = currentUserId;
       this._elementTemplate = elementTemplate;
       this._handleCardClick = handleCardClick;
-      this._asyncDeleteHandler = asyncDeleteHandler;
+      this._handleDeleteClick = handleDeleteClick;
       this._asyncLikeHandler = asyncLikeHandler;
       this._asyncDislikeHandler = asyncDislikeHandler;
       this._element = this._createCard();
@@ -48,7 +48,7 @@ export default class Card {
         .then(() => this._showLikes())
     }
 
-    _deleteCard() {
+    deleteCard() {
       this._element.remove();
       this._element = null;
     }
@@ -63,7 +63,7 @@ export default class Card {
       const deleteBtn = this._element.querySelector('.elements__button-delete')
       if (deleteBtn) {
         deleteBtn.addEventListener('click', () => {
-          this._showDeleteConfirmation();
+          this._handleDeleteClick(this);
         });
       }
       
@@ -74,26 +74,6 @@ export default class Card {
         });
     }
   
-    //Окно подтверждение удаления карточки
-    _showDeleteConfirmation() {
-      const popupWithSubmit = new PopupWithSubmit(
-        '.popup_confirm', 
-        () => {
-          popupWithSubmit.showSaving()
-          this._asyncDeleteHandler()
-          .then(() => this._deleteCard())
-          .catch((err) => {
-            console.log(err);
-          })
-          .finally(() => {
-            popupWithSubmit.close();
-            popupWithSubmit.restoreDefaultText();
-          })
-        }
-      );
-      popupWithSubmit.setEventListeners();
-      popupWithSubmit.open();
-    }
 
     _createCard() {
       const elementTemplate = document.querySelector(this._elementTemplate).content;
